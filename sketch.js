@@ -111,8 +111,8 @@ function setup() {
      llcheck[i] = false;
      rlcheck[i] = true;
      armposition[i] = 0;
-     legreset[i] = true;
-     armreset[i] = true;
+     legreset[i] = false;
+     armreset[i] = false;
   }
   xaxis[0] = -400;
   xaxis[1] = 0;
@@ -131,7 +131,10 @@ function draw() {
 
   //create robots
   for(let i = 0; i<robots; i++){
+    push();
+    translate(-400+(400*i),0,0);
     Humanoid(xaxis[i], yaxis[i], zaxis[i], xrot[i], yrot[i], zrot[i], lax[i], lay[i], laz[i], lfax[i], lfay[i], lfaz[i], rax[i], ray[i], raz[i], rfax[i], rfay[i], rfaz[i], ltx[i], lty[i], ltz[i], llx[i], lly[i], llz[i], rtx[i], rty[i], rtz[i], rlx[i], rly[i], rlz[i]);
+    pop();
   }
 
 
@@ -139,10 +142,12 @@ function draw() {
   leftsidewalk(0);
   clappingarms(0);
 
+  leftturn(1);
   //walk(1);
   //waggingarms(1);
   //rhythm(1);
   //raisearms(1);
+  raiseleftarm(1);
 
   switch (armposition[1]){
     case 1:

@@ -562,6 +562,83 @@ function rightsiderhythm(i){
   }
   }
 }
+function rightturn(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    rtz[i]=0;
+    ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    rly[i]=0;
+    lly[i]=0;
+    rlz[i]=0;
+    llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+
+  if(walktoken[i] == true){
+    if(zrot[i]<TWO_PI-radians(15)){
+      zrot[i]+=(radians(15));
+      ltx[i]+=radians(3);
+      llx[i]-=radians(3);
+    }
+  }
+  else{
+    zrot[i]=0;
+    if(ltx[i]>0){
+      ltx[i]-=radians(3);
+      llx[i]+=radians(3);
+    }
+  }
+}
+function leftturn(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    rtz[i]=0;
+    ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    rly[i]=0;
+    lly[i]=0;
+    rlz[i]=0;
+    llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+
+  if(walktoken[i] == true){
+    if(zrot[i]>-TWO_PI+radians(15)){
+      zrot[i]-=(radians(15));
+      rtx[i]+=radians(3);
+      rlx[i]-=radians(3);
+    }
+  }
+  else{
+    zrot[i]=0;
+    if(rtx[i]>0){
+      rtx[i]-=radians(3);
+      rlx[i]+=radians(3);
+    }
+  }
+}
+
 
 
 
