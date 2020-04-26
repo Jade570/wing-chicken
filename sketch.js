@@ -37,7 +37,7 @@ let clapcheck = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-
+  frameRate(30);
   for(let i = 0; i<2; i++){
      xaxis[i]=0;
      yaxis[i]=0;
@@ -95,6 +95,28 @@ let h2 = Humanoid(xaxis[1], yaxis[1], zaxis[1], xrot[1], yrot[1], zrot[1], lax[1
 rightsidewalk(0);
 //waggingarms(0);
 walk(1);
+
+if(frameCount % 30 == 0){
+  for(let i = 0; i<2; i++){
+    if (walktoken[i] == true){
+      walktoken[i] = false;
+    }
+    else{
+      walktoken[i] = true;
+    }
+  }
+}
+
+if(frameCount % 30 == 15 || frameCount % 30 == 0 ){
+  for(let i = 0; i<2; i++){
+    if (bendcheck[i] == true){
+      bendcheck[i] = false;
+    }
+    else{
+      bendcheck[i] = true;
+    }
+  }
+}
 
 
 

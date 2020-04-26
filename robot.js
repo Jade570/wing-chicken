@@ -244,46 +244,28 @@ function body(){
 
 function walk (i){
   if(bendcheck[i] == true){
-    if(zaxis[i]<50){
       zaxis[i]+=(50*sin(radians(2)));
-      xrot[i]-=(radians(0.1));
-    }
-    else{
-      bendcheck[i] = false;
-    }
+      xrot[i]-=(radians(0.2));
   }
   else{
-    if(zaxis[i]>0){
       zaxis[i]-=(50*sin(radians(2)));
-      xrot[i]+=(radians(0.1));
-    }
-    else{
-      bendcheck[i] = true;
-    }
+      xrot[i]+=(radians(0.2));
   }
 
   if(walktoken[i] == true){
     if(rtx[i]<HALF_PI/2){
-      rtx[i]+=(radians(2));
-      ltx[i]-=(radians(2));
-      rax[i]-=(radians(2));
-      lax[i]+=(radians(2));
-    }
-    else{
-      walktoken[i] = false;
-      console.log('a');
+      rtx[i]+=(radians(4));
+      ltx[i]-=(radians(4));
+      rax[i]-=(radians(4));
+      lax[i]+=(radians(4));
     }
   }
   else{
-    if(ltx[i]<(HALF_PI/2)){
-      rtx[i]-=(radians(2));
-      ltx[i]+=(radians(2));
-      rax[i]+=(radians(2));
-      lax[i]-=(radians(2));
-    }
-    else{
-      walktoken[i] = true;
-      console.log('a');
+    if(rtx[i]>-(HALF_PI/2)){
+      rtx[i]-=(radians(4));
+      ltx[i]+=(radians(4));
+      rax[i]+=(radians(4));
+      lax[i]-=(radians(4));
     }
   }
 }
@@ -297,8 +279,8 @@ function rightsidewalk (i){
       lty[i]-=(radians(1));
     }
     else{
-      walktoken[i] = false;
-      console.log("b");
+      //walktoken[i] = false;
+    //  console.log("b");
     }
   }
   else{
@@ -307,7 +289,7 @@ function rightsidewalk (i){
         rty[i]-=(radians(1));
       }
       else{
-        walktoken[i] = true;
+        //walktoken[i] = true;
         rlcheck[i] = false;
         llcheck[i] = true;
 
@@ -318,7 +300,7 @@ function rightsidewalk (i){
       lty[i]+=(radians(1));
       }
       else{
-        walktoken[i] = true;
+        //walktoken[i] = true;
         rlcheck[i] = true;
         llcheck[i] = false;
       }
