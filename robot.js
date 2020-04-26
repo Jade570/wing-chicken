@@ -324,6 +324,53 @@ function rightsidewalk (i){
   }
 }
 
+function leftsidewalk (i){
+  if(walktoken[i] == true){
+    if(rty[i]<HALF_PI/4 && llcheck[i] == true){
+      rty[i]+=(radians(2));
+      yrot[i]-=(radians(2));
+      xaxis[i]+=12*sin((radians(30)));
+      rtx[i]+=(radians(2));
+      rlx[i]-=(radians(2));
+      xrot[i]-=(radians(0.5));
+      zaxis[i]+=(50*sin(radians(2)));
+      yaxis[i]+=(50*sin(radians(2)));
+    }
+    else if(lty[i]>-(HALF_PI/4) && rlcheck[i] == true){
+      lty[i]-=(radians(2));
+      yrot[i]+=(radians(2));
+      xaxis[i]-=12*sin((radians(30)));
+      ltx[i]+=(radians(2));
+      llx[i]-=(radians(2));
+      xrot[i]-=(radians(0.5));
+      zaxis[i]+=(50*sin(radians(2)));
+      yaxis[i]+=(50*sin(radians(2)));
+    }
+  }
+  else{
+    if(rty[i]>radians(2) && llcheck[i] == true){
+        rty[i]-=(radians(2));
+        yrot[i]+=(radians(2));
+        rtx[i]-=(radians(2));
+        rlx[i]+=(radians(2));
+        xrot[i]+=(radians(0.5));
+        zaxis[i]-=(50*sin(radians(2)));
+        yaxis[i]-=(50*sin(radians(2)));
+    }
+    else if(lty[i]<-radians(2) && rlcheck[i] == true){
+        lty[i]+=(radians(2));
+        yrot[i]-=(radians(2));
+        ltx[i]-=(radians(2));
+        llx[i]+=(radians(2));
+        xrot[i]+=(radians(0.5));
+        zaxis[i]-=(50*sin(radians(2)));
+        yaxis[i]-=(50*sin(radians(2)));
+    }
+  }
+}
+
+
+
 function walkingarms(i){
   if(walktoken[i] == true){
     if(lax[i]<HALF_PI/2 && rlcheck[i] == true){
