@@ -138,6 +138,7 @@ function draw() {
   //walk(1);
   //waggingarms(1);
   rhythm(1);
+  raisearms(1);
 
   rightsidewalk(2);
   walkingarms(2);
