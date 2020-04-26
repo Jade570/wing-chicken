@@ -130,8 +130,14 @@ function draw() {
   translate(0,0,-800);
   rotateX(radians(-90));
   //rotateZ(radians(35));
-
-
+  push();
+  fill(200,200,200);
+  //strokeWeight(5);
+  noStroke();
+  translate(0,300,400);
+  rotateX(radians(90));
+  cylinder(1000,200);
+  pop();
   //create robots
   for(let i = 0; i<robots; i++){
     push();
@@ -150,16 +156,17 @@ function draw() {
 
   rightturn(1);
   //walk(1);
-  //waggingarms(1);
+  waggingarms(1);
   //rhythm(1);
   //raisearms(1);
-  raisearms(1);
+  //raisearms(1);
 
   //walk(2);
   //rightturn(2);
   rightsiderhythm(2);
   //rightsidewalk(2);
-  walkingarms(2);
+  //walkingarms(2);
+  raiseleftarm(2);
 
   switch (armposition[1]){
     case 1:

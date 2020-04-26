@@ -864,7 +864,7 @@ function raiseleftarm(i){
       lay[i] -= radians(1);
       lfax[i] -= radians(10);
       lfay[i] -= radians(5);
-      melody[i].triggerAttackRelease(["E5"], "4n" , "+0", 0.5);
+      melody[i].triggerAttackRelease(["E5"], "4n" , "+0", 0.4);
     }
   }
   else{
@@ -872,7 +872,7 @@ function raiseleftarm(i){
       lay[i] += radians(1);
       lfax[i] += radians(10);
       lfay[i] += radians(5);
-      melody[i].triggerAttackRelease(["B4"], "4n" , "+0", 0.5);
+      melody[i].triggerAttackRelease(["B4"], "4n" , "+0", 0.4);
     }
   }
 }
@@ -899,7 +899,7 @@ function raiserightarm(i){
       ray[i] += radians(1);
       rfax[i] -= radians(10);
       rfay[i] += radians(5);
-      melody[i].triggerAttackRelease(["G5"], "4n" , "+0", 0.5);
+      melody[i].triggerAttackRelease(["G5"], "4n" , "+0", 0.4);
     }
   }
   else{
@@ -907,7 +907,7 @@ function raiserightarm(i){
       ray[i] -= radians(1);
       rfax[i] += radians(10);
       rfay[i] -= radians(5);
-      melody[i].triggerAttackRelease(["E5"], "4n" , "+0", 0.5);
+      melody[i].triggerAttackRelease(["E5"], "4n" , "+0", 0.4);
     }
   }
 }
