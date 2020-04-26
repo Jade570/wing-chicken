@@ -91,6 +91,8 @@ class Humanoid {
   }
 }
 */
+
+//building robot
 function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lfay, lfaz, rax, ray, raz, rfax, rfay, rfaz, ltx, lty, ltz, llx, lly, llz, rtx, rty, rtz, rlx, rly, rlz){
   push();
   translate(xaxis,yaxis,zaxis);
@@ -140,9 +142,6 @@ function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lf
     pop();
   pop();
 }
-
-
-
 function Limb (xrot, yrot, zrot, rad, w, h, d) {
     rotateX(xrot);
     rotateY(yrot);
@@ -154,7 +153,6 @@ function Limb (xrot, yrot, zrot, rad, w, h, d) {
     fill(0, 255, 255);
     box(w, h, d);
 }
-
 function head(){
   noStroke();
   fill(14, 230, 57);
@@ -230,16 +228,13 @@ function head(){
   pop();
   pop();
 }
-
 function body(){
   noStroke();
   box(150,150,200);
 }
 
 
-
-
-
+//leg movement
 function walk (i){
   if(walktoken[i] == true){
     if(rtx[i]<HALF_PI/2 && rlcheck[i] == true){
@@ -278,7 +273,6 @@ function walk (i){
     }
   }
 }
-
 function rightsidewalk (i){
   if(walktoken[i] == true){
     if(rty[i]<HALF_PI/4 && rlcheck[i] == true){
@@ -323,7 +317,6 @@ function rightsidewalk (i){
     }
   }
 }
-
 function leftsidewalk (i){
   if(walktoken[i] == true){
     if(rty[i]<HALF_PI/4 && llcheck[i] == true){
@@ -370,7 +363,7 @@ function leftsidewalk (i){
 }
 
 
-
+//arm movement
 function walkingarms(i){
   if(walktoken[i] == true){
     if(lax[i]<HALF_PI/2 && rlcheck[i] == true){

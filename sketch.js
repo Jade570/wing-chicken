@@ -117,29 +117,29 @@ function setup() {
 
 
 function draw() {
-background(0);
-lights();
+  background(0);
+  lights();
 
-translate(0,0,-600);
-rotateX(radians(-90));
-//rotateZ(radians(35));
-
-
-//create robots
-for(let i = 0; i<robots; i++){
-  Humanoid(xaxis[i], yaxis[i], zaxis[i], xrot[i], yrot[i], zrot[i], lax[i], lay[i], laz[i], lfax[i], lfay[i], lfaz[i], rax[i], ray[i], raz[i], rfax[i], rfay[i], rfaz[i], ltx[i], lty[i], ltz[i], llx[i], lly[i], llz[i], rtx[i], rty[i], rtz[i], rlx[i], rly[i], rlz[i]);
-}
+  translate(0,0,-600);
+  rotateX(radians(-90));
+  //rotateZ(radians(35));
 
 
-//robot control part
-leftsidewalk(0);
-clappingarms(0);
+  //create robots
+  for(let i = 0; i<robots; i++){
+    Humanoid(xaxis[i], yaxis[i], zaxis[i], xrot[i], yrot[i], zrot[i], lax[i], lay[i], laz[i], lfax[i], lfay[i], lfaz[i], rax[i], ray[i], raz[i], rfax[i], rfay[i], rfaz[i], ltx[i], lty[i], ltz[i], llx[i], lly[i], llz[i], rtx[i], rty[i], rtz[i], rlx[i], rly[i], rlz[i]);
+  }
 
-walk(1);
-waggingarms(1);
 
-rightsidewalk(2);
-walkingarms(2);
+  //robot control part
+  leftsidewalk(0);
+  clappingarms(0);
 
-robotcontrol();
+  walk(1);
+  waggingarms(1);
+
+  rightsidewalk(2);
+  walkingarms(2);
+
+  robotcontrol();
 }
