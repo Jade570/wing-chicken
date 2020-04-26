@@ -33,7 +33,8 @@ let walktoken = [];
 let bendcheck = [];
 let llcheck = [];
 let rlcheck = [];
-let clapcheck = [];
+let armposition = [];
+let armreset = [];
 let robots;
 
 function robotcontrol(){
@@ -108,7 +109,8 @@ function setup() {
      bendcheck[i]=true;
      llcheck[i] = false;
      rlcheck[i] = true;
-     clapcheck[i] = false;
+     armposition[i] = 0;
+     armreset[i] = true;
   }
   xaxis[0] = -400;
   xaxis[1] = 0;
@@ -138,10 +140,75 @@ function draw() {
   //walk(1);
   //waggingarms(1);
   rhythm(1);
-  raisearms(1);
+  //raisearms(1);
+
+  switch (armposition[1]){
+    case 1:
+    walkingarms(1);
+    break;
+
+    case 2 :
+    waggingarms(1);
+    break;
+
+    case 3:
+    clappingarms(1);
+    break;
+
+    case 4:
+    raisearms(1);
+    break;
+
+    case 5 :
+    raiseleftarm(1);
+    break;
+
+    case 6:
+    raiserightarm(1);
+    break;
+
+    default:
+    break;
+  }
+
 
   rightsidewalk(2);
   walkingarms(2);
 
   robotcontrol();
+}
+
+
+function keyPressed() {
+  switch (key){
+    case '1':
+    armreset[1] = false;
+    armposition[1] = 1;
+    break;
+
+    case '2' :
+    armreset[1] = false;
+    armposition[1] = 2;
+    break;
+
+    case '3':
+    armreset[1] = false;
+    armposition[1] = 3;
+    break;
+
+    case '4':
+    armreset[1] = false;
+    armposition[1] = 4;
+    break;
+
+    case '5' :
+    armreset[1] = false;
+    armposition[1] = 5;
+    break;
+
+    case '6':
+    armreset[1] = false;
+    armposition[1] = 6;
+    break;
+  }
 }

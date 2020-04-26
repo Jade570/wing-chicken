@@ -432,6 +432,22 @@ function rightsiderhythm(i){
 
 //arm movement
 function walkingarms(i){
+  if(armreset[i] == false){
+    rax[i]=0;
+    lax[i]=0;
+    ray[i]=0;
+    lay[i]=0;
+    raz[i]=0;
+    laz[i]=0;
+    rfax[i]=HALF_PI/3;
+    lfax[i]=HALF_PI/3;
+    rfay[i]=0;
+    lfay[i]=0;
+    rfaz[i]=0;
+    lfaz[i]=0;
+    armreset[i] = true;
+  }
+
   if(walktoken[i] == true){
     if(lax[i]<HALF_PI/2 && rlcheck[i] == true){
       rax[i]-=(radians(4));
@@ -454,6 +470,22 @@ function walkingarms(i){
   }
 }
 function waggingarms(i){
+  if(armreset[i] == false){
+    rax[i]=0;
+    lax[i]=0;
+    ray[i]=0;
+    lay[i]=0;
+    raz[i]=0;
+    laz[i]=0;
+    rfax[i]=HALF_PI/3;
+    lfax[i]=HALF_PI/3;
+    rfay[i]=0;
+    lfay[i]=0;
+    rfaz[i]=0;
+    lfaz[i]=0;
+    armreset[i] = true;
+  }
+
   if(walktoken[i] == true){
     if(ray[i] < HALF_PI/4){
       ray[i]+=(radians(2));
@@ -468,22 +500,22 @@ function waggingarms(i){
   }
 }
 function clappingarms(i){
-  if(lax[i]<radians(45)){
-    ray[i]-=radians(1);
-    lay[i]+=radians(1);
-    rfay[i]-=(radians(4.5));
-    lfay[i]+=(radians(4.5));
-    lax[i]+=radians(4.5);
-    rax[i]+=radians(4.5);
+  if(armreset[i] == false){
+    rax[i]=radians(45);
+    lax[i]=radians(45);
+    ray[i]=radians(10);
+    lay[i]=-(radians(10));
+    raz[i]=0;
+    laz[i]=0;
+    rfax[i]=HALF_PI/3;
+    lfax[i]=HALF_PI/3;
+    rfay[i]=radians(45);
+    lfay[i]=-(radians(45));
+    rfaz[i]=0;
+    lfaz[i]=0;
+    armreset[i] = true;
   }
-  else if(lax[i]>radians(45)){
-    ray[i]+=radians(1);
-    lay[i]-=radians(1);
-    rfay[i]+=(radians(4.5));
-    lfay[i]-=(radians(4.5));
-    lax[i]-=radians(4.5);
-    rax[i]-=radians(4.5);
-  }
+
 
   if(walktoken[i] == true){
     if(rfay[i] < HALF_PI/4){
@@ -494,7 +526,7 @@ function clappingarms(i){
     }
   }
   else{
-    if(rfay[i] > -HALF_PI/2){
+    if(rfay[i] > -HALF_PI/3){
       ray[i]-=(radians(2));
       lay[i]+=(radians(2));
       rfay[i]-=(radians(6));
@@ -503,11 +535,20 @@ function clappingarms(i){
   }
 }
 function raisearms(i){
-  if(lay[i]>-(radians(120))){
-    lay[i] -= radians(10);
-    lfax[i] += radians(10);
-    ray[i] += radians(10);
-    rfax[i] += radians(10);
+  if(armreset[i] == false){
+    rax[i]=0;
+    lax[i]=0;
+    ray[i] = radians(120);
+    lay[i] = -radians(120);
+    raz[i]=0;
+    laz[i]=0;
+    rfax[i] = radians(120);
+    lfax[i] = radians(120);
+    rfay[i]=0;
+    lfay[i]=0;
+    rfaz[i]=0;
+    lfaz[i]=0;
+    armreset[i] = true;
   }
   if(bendcheck[i] == true ){
     if(lfay[i]>-(HALF_PI/2)){
@@ -531,10 +572,22 @@ function raisearms(i){
   }
 }
 function raiseleftarm(i){
-  if(lay[i]>-(radians(120))){
-    lay[i] -= radians(10);
-    lfax[i] += radians(10);
+  if(armreset[i] == false){
+    rax[i]=0;
+    lax[i]=0;
+    ray[i] = 0;
+    lay[i] = -radians(120);
+    raz[i]=0;
+    laz[i]=0;
+    rfax[i] = 0;
+    lfax[i] = radians(120);
+    rfay[i]=0;
+    lfay[i]=0;
+    rfaz[i]=0;
+    lfaz[i]=0;
+    armreset[i] = true;
   }
+
   if(bendcheck[i] == true ){
     if(lfay[i]>-(HALF_PI/2)){
       lay[i] -= radians(1);
@@ -551,10 +604,23 @@ function raiseleftarm(i){
   }
 }
 function raiserightarm(i){
-  if(ray[i]<(radians(120))){
-    ray[i] += radians(10);
-    rfax[i] += radians(10);
+  if(armreset[i] == false){
+    rax[i]=0;
+    lax[i]=0;
+    ray[i] = radians(120);
+    lay[i] = 0;
+    raz[i]=0;
+    laz[i]=0;
+    rfax[i] = radians(120);
+    lfax[i] = 0;
+    rfay[i]=0;
+    lfay[i]=0;
+    rfaz[i]=0;
+    lfaz[i]=0;
+    armreset[i] = true;
   }
+
+
   if(bendcheck[i] == true ){
     if(rfay[i]<(HALF_PI/2)){
       ray[i] += radians(1);
