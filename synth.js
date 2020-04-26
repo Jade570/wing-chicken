@@ -3,10 +3,11 @@
 let kick = new Tone.Player("./assets/kick.wav").toMaster();
 let snare = new Tone.Player("./assets/snare.wav").toMaster();
 let bass = [robots];
+let melody = [robots];
 
 bass[0] = new Tone.MonoSynth({
 	"oscillator" : {
-		"type" : "square10"
+		"type" : "square4"
  },
  "envelope" : {
  	"attack" : 0.1
@@ -21,12 +22,11 @@ bass[1] = new Tone.MonoSynth({
 	"oscillator" : {
 		"type" : "sawtooth6"
  }
-
 }).toMaster();
 
 bass[2] = new Tone.MonoSynth({
 	"oscillator" : {
-		"type" : "sawtooth12"
+		"type" : "sawtooth3"
  },
  "envelope" : {
  	"attack" : 0.1
@@ -38,5 +38,32 @@ bass[2] = new Tone.MonoSynth({
 "filter" : {
   "type" : "lowshelf",
   "frequency" : 350
+}
+}).toMaster();
+
+melody[0] = new Tone.PolySynth(2, Tone.Synth, {
+  oscillator : {
+  type : "square1"
+},
+  filter : {
+    type: "lowshelf",
+    frequency : 300
+  }
+}).toMaster();
+
+melody[1] = new Tone.PolySynth(2, Tone.Synth,{
+  filter : {
+    type: "lowshelf",
+    frequency : 300
+  }
+}).toMaster();
+
+melody[2] = new Tone.PolySynth(2, Tone.Synth, {
+  oscillator : {
+  type : "sawtooth3"
+},
+filter : {
+  type: "lowpass",
+  frequency : 200
 }
 }).toMaster();

@@ -153,7 +153,7 @@ function draw() {
   //waggingarms(1);
   //rhythm(1);
   //raisearms(1);
-  raiseleftarm(1);
+  raisearms(1);
 
   //walk(2);
   //rightturn(2);

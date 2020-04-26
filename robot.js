@@ -621,7 +621,7 @@ function rightturn(i){
       }
     }
   }
-}
+} //only drum
 function leftturn(i){
   if(legreset[i] == false){
     rtx[i]=0;
@@ -666,7 +666,7 @@ function leftturn(i){
       }
     }
   }
-}
+} //only drum
 
 
 
@@ -693,23 +693,35 @@ function walkingarms(i){
     if(lax[i]<HALF_PI/2 && rlcheck[i] == true){
       rax[i]-=(radians(4));
       lax[i]+=(radians(4));
+      melody[i].triggerAttackRelease(["E4"], "4n" , "+0", 0.5);
     }
     else if(rax[i]<HALF_PI/2 && llcheck[i] == true){
       rax[i]+=(radians(4));
       lax[i]-=(radians(4));
+      melody[i].triggerAttackRelease(["A4"], "4n" , "+0", 0.5);
+    }
+    else if(lax[i]>=HALF_PI/2 && rlcheck[i] == true){
+      melody[i].triggerAttackRelease(["F#4"], "4n" , "+0", 0.5);
+    }
+    else if(rax[i]>=HALF_PI/2 && llcheck[i] == true){
+
+      melody[i].triggerAttackRelease(["G4"], "4n" , "+0", 0.5);
     }
   }
   else{
     if(lax[i]>radians(4) && rlcheck[i] == true){
       rax[i]+=(radians(4));
       lax[i]-=(radians(4));
+      melody[i].triggerAttackRelease(["B4", "G4"], "4n" , "+0", 0.5);
     }
     else if(rax[i]>0 && llcheck[i] == true){
       rax[i]-=(radians(4));
       lax[i]+=(radians(4));
+      melody[i].triggerAttackRelease(["B4", "G4"], "4n" , "+0", 0.5);
     }
   }
 }
+
 function waggingarms(i){
   if(armreset[i] == false){
     rax[i]=0;
@@ -731,15 +743,24 @@ function waggingarms(i){
     if(ray[i] < HALF_PI/4){
       ray[i]+=(radians(2));
       lay[i]-=(radians(2));
+      melody[i].triggerAttackRelease(["G4"], "4n" , "+0", 0.5);
+    }
+    else if(ray[i] >= HALF_PI/4){
+      melody[i].triggerAttackRelease(["F#4"], "4n" , "+0", 0.5);
     }
   }
   else{
     if(ray[i] > 0){
       ray[i]-=(radians(2));
       lay[i]+=(radians(2));
+      melody[i].triggerAttackRelease(["E4"], "4n" , "+0", 0.5);
+    }
+    else if (ray[i] <= 0){
+      melody[i].triggerAttackRelease(["E4"], "4n" , "+0", 0.5);
     }
   }
 }
+
 function clappingarms(i){
   if(armreset[i] == false){
     rax[i]=radians(45);
@@ -781,7 +802,7 @@ function clappingarms(i){
       }
     }
   }
-}
+} // only drum
 function raisearms(i){
   if(armreset[i] == false){
     rax[i]=0;
@@ -806,6 +827,7 @@ function raisearms(i){
       ray[i] += radians(1);
       rfax[i] -= radians(10);
       rfay[i] += radians(5);
+      melody[i].triggerAttackRelease(["E5", "G5"], "4n" , "+0", 0.3);
     }
   }
   else{
@@ -816,6 +838,7 @@ function raisearms(i){
       ray[i] -= radians(1);
       rfax[i] += radians(10);
       rfay[i] -= radians(5);
+      melody[i].triggerAttackRelease(["B4", "E5"], "4n" , "+0", 0.3);
     }
   }
 }
@@ -841,6 +864,7 @@ function raiseleftarm(i){
       lay[i] -= radians(1);
       lfax[i] -= radians(10);
       lfay[i] -= radians(5);
+      melody[i].triggerAttackRelease(["E5"], "4n" , "+0", 0.5);
     }
   }
   else{
@@ -848,6 +872,7 @@ function raiseleftarm(i){
       lay[i] += radians(1);
       lfax[i] += radians(10);
       lfay[i] += radians(5);
+      melody[i].triggerAttackRelease(["B4"], "4n" , "+0", 0.5);
     }
   }
 }
@@ -874,6 +899,7 @@ function raiserightarm(i){
       ray[i] += radians(1);
       rfax[i] -= radians(10);
       rfay[i] += radians(5);
+      melody[i].triggerAttackRelease(["G5"], "4n" , "+0", 0.5);
     }
   }
   else{
@@ -881,6 +907,7 @@ function raiserightarm(i){
       ray[i] -= radians(1);
       rfax[i] += radians(10);
       rfay[i] -= radians(5);
+      melody[i].triggerAttackRelease(["E5"], "4n" , "+0", 0.5);
     }
   }
 }
