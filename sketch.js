@@ -35,6 +35,7 @@ let llcheck = [];
 let rlcheck = [];
 let armposition = [];
 let armreset = [];
+let legreset = [];
 let robots;
 
 function robotcontrol(){
@@ -110,6 +111,7 @@ function setup() {
      llcheck[i] = false;
      rlcheck[i] = true;
      armposition[i] = 0;
+     legreset[i] = true;
      armreset[i] = true;
   }
   xaxis[0] = -400;
@@ -139,32 +141,32 @@ function draw() {
 
   //walk(1);
   //waggingarms(1);
-  rhythm(1);
+  //rhythm(1);
   //raisearms(1);
 
   switch (armposition[1]){
     case 1:
-    walkingarms(1);
+    walk(1);
     break;
 
     case 2 :
-    waggingarms(1);
+    rightsidewalk(1);
     break;
 
     case 3:
-    clappingarms(1);
+    leftsidewalk(1);
     break;
 
     case 4:
-    raisearms(1);
+    rhythm(1);
     break;
 
     case 5 :
-    raiseleftarm(1);
+    leftsiderhythm(1);
     break;
 
     case 6:
-    raiserightarm(1);
+    rightsiderhythm(1);
     break;
 
     default:
@@ -182,32 +184,32 @@ function draw() {
 function keyPressed() {
   switch (key){
     case '1':
-    armreset[1] = false;
+    legreset[1] = false;
     armposition[1] = 1;
     break;
 
     case '2' :
-    armreset[1] = false;
+    legreset[1] = false;
     armposition[1] = 2;
     break;
 
     case '3':
-    armreset[1] = false;
+    legreset[1] = false;
     armposition[1] = 3;
     break;
 
     case '4':
-    armreset[1] = false;
+    legreset[1] = false;
     armposition[1] = 4;
     break;
 
     case '5' :
-    armreset[1] = false;
+    legreset[1] = false;
     armposition[1] = 5;
     break;
 
     case '6':
-    armreset[1] = false;
+    legreset[1] = false;
     armposition[1] = 6;
     break;
   }

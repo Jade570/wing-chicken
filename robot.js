@@ -236,6 +236,28 @@ function body(){
 
 //leg movement
 function walk(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    rtz[i]=0;
+    ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    rly[i]=0;
+    lly[i]=0;
+    rlz[i]=0;
+    llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+
   if(walktoken[i] == true){
     if(rtx[i]<HALF_PI/2 && rlcheck[i] == true){
       rtx[i]+=(radians(4));
@@ -274,6 +296,29 @@ function walk(i){
   }
 }
 function rightsidewalk(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    rtz[i]=0;
+    ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    rly[i]=0;
+    lly[i]=0;
+    rlz[i]=0;
+    llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+
+
   if(walktoken[i] == true){
     if(rty[i]<HALF_PI/4 && rlcheck[i] == true){
       rty[i]+=(radians(2));
@@ -318,6 +363,28 @@ function rightsidewalk(i){
   }
 }
 function leftsidewalk(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    rtz[i]=0;
+    ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    rly[i]=0;
+    lly[i]=0;
+    rlz[i]=0;
+    llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+
   if(walktoken[i] == true){
     if(rty[i]<HALF_PI/4 && llcheck[i] == true){
       rty[i]+=(radians(2));
@@ -362,6 +429,28 @@ function leftsidewalk(i){
   }
 }
 function rhythm(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    rtz[i]=0;
+    ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    rly[i]=0;
+    lly[i]=0;
+    rlz[i]=0;
+    llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+
   if(bendcheck[i] == true){
     if(rtx[i]<HALF_PI/8){
     rtx[i]+=(radians(2));
@@ -384,6 +473,29 @@ function rhythm(i){
   }
 }
 function leftsiderhythm(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    rtz[i]=0;
+    ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    rly[i]=0;
+    lly[i]=0;
+    rlz[i]=0;
+    llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+
+
   if(bendcheck[i] == true){
     if(rtx[i]<HALF_PI/8){
       rtx[i]+=(radians(2));
@@ -406,6 +518,29 @@ function leftsiderhythm(i){
   }
 }
 function rightsiderhythm(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    rtz[i]=0;
+    ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    rly[i]=0;
+    lly[i]=0;
+    rlz[i]=0;
+    llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+
+
   if(bendcheck[i] == true){
     if(ltx[i]<HALF_PI/8){
     rtx[i]+=(radians(8));
