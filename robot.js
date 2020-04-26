@@ -670,17 +670,17 @@ function rightturn(i){
   }
 
   if(walktoken[i] == true){
-    if(zrot[i]<TWO_PI-radians(15)){
+    if(zrot[i]<TWO_PI){
       zrot[i]+=(radians(15));
-      ltx[i]+=radians(3);
-      llx[i]-=radians(3);
+      ltx[i]+=radians(4);
+      llx[i]-=radians(4);
     }
   }
   else{
     zrot[i]=0;
     if(ltx[i]>0){
-      ltx[i]-=radians(3);
-      llx[i]+=radians(3);
+      ltx[i]-=radians(4);
+      llx[i]+=radians(4);
       kicktoken[i] = true;
     }
     else{
@@ -715,17 +715,17 @@ function leftturn(i){
   }
 
   if(walktoken[i] == true){
-    if(zrot[i]>-TWO_PI+radians(15)){
+    if(zrot[i]>-TWO_PI){
       zrot[i]-=(radians(15));
-      rtx[i]+=radians(3);
-      rlx[i]-=radians(3);
+      rtx[i]+=radians(4);
+      rlx[i]-=radians(4);
     }
   }
   else{
     zrot[i]=0;
     if(rtx[i]>0){
-      rtx[i]-=radians(3);
-      rlx[i]+=radians(3);
+      rtx[i]-=radians(4);
+      rlx[i]+=radians(4);
       kicktoken[i] = true;
     }
     else{
@@ -841,6 +841,13 @@ function clappingarms(i){
       lay[i]+=(radians(2));
       rfay[i]-=(radians(6));
       lfay[i]+=(radians(6));
+      snaretoken[i] = true;
+    }
+    else{
+      if(snaretoken[i] == true){
+        snare.start();
+        snaretoken[i] = false;
+      }
     }
   }
 }

@@ -1,43 +1,44 @@
-let uy, uz, fy, fz;
-let xaxis = [];
-let yaxis = [];
-let zaxis = [];
-let xrot=[];
-let yrot=[];
-let zrot=[];
-let lax = [];
-let lay = [];
-let laz = [];
-let lfax = [];
-let lfay = [];
-let lfaz = [];
-let rax = [];
-let ray = [];
-let raz = [];
-let rfax = [];
-let rfay = [];
-let rfaz = [];
-let ltx = [];
-let lty = [];
-let ltz = [];
-let llx = [];
-let lly = [];
-let llz = [];
-let rtx = [];
-let rty = [];
-let rtz = [];
-let rlx = [];
-let rly = [];
-let rlz = [];
-let walktoken = [];
-let bendcheck = [];
-let llcheck = [];
-let rlcheck = [];
-let armposition = [];
-let armreset = [];
-let legreset = [];
-let kicktoken = [];
-let robots;
+const robots = 3;
+let xaxis = [robots];
+let yaxis = [robots];
+let zaxis = [robots];
+let xrot=[robots];
+let yrot=[robots];
+let zrot=[robots];
+let lax = [robots];
+let lay = [robots];
+let laz = [robots];
+let lfax = [robots];
+let lfay = [robots];
+let lfaz = [robots];
+let rax = [robots];
+let ray = [robots];
+let raz = [robots];
+let rfax = [robots];
+let rfay = [robots];
+let rfaz = [robots];
+let ltx = [robots];
+let lty = [robots];
+let ltz = [robots];
+let llx = [robots];
+let lly = [robots];
+let llz = [robots];
+let rtx = [robots];
+let rty = [robots];
+let rtz = [robots];
+let rlx = [robots];
+let rly = [robots];
+let rlz = [robots];
+let walktoken = [robots];
+let bendcheck = [robots];
+let llcheck = [robots];
+let rlcheck = [robots];
+let armposition = [robots];
+let armreset = [robots];
+let legreset = [robots];
+let kicktoken = [robots];
+let snaretoken = [robots];
+
 
 function robotcontrol(){
   if(frameCount % 30 == 0){
@@ -75,7 +76,6 @@ function robotcontrol(){
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   frameRate(60);
-  robots = 3;
   for(let i = 0; i<robots; i++){
      xaxis[i]=0;
      yaxis[i]=0;
@@ -115,6 +115,7 @@ function setup() {
      legreset[i] = false;
      armreset[i] = false;
      kicktoken[i] = false;
+     snaretoken[i] = false;
   }
   xaxis[0] = -400;
   xaxis[1] = 0;
@@ -141,9 +142,9 @@ function draw() {
 
 
   //robot control part
-  leftsidewalk(0);
+  //leftsidewalk(0);
   clappingarms(0);
-
+  leftturn(0);
   //rightturn(1);
   walk(1);
   //waggingarms(1);
@@ -151,8 +152,8 @@ function draw() {
   //raisearms(1);
   raiseleftarm(1);
 
-
-  rightsidewalk(2);
+  rightturn(2);
+  //rightsidewalk(2);
   walkingarms(2);
 
   switch (armposition[1]){
