@@ -93,13 +93,12 @@ class Humanoid {
 */
 function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lfay, lfaz, rax, ray, raz, rfax, rfay, rfaz, ltx, lty, ltz, llx, lly, llz, rtx, rty, rtz, rlx, rly, rlz){
   push();
-
+  translate(xaxis,yaxis,zaxis);
+  rotateX(xrot);
+  rotateY(yrot);
+  rotateZ(zrot);
     push();
-    translate(xaxis,yaxis,zaxis-200);
-    rotateX(xrot);
-    rotateY(yrot);
-    rotateZ(zrot);
-
+    translate(0,0,-200);
     head();
     push();
     translate(0,0,150);
@@ -107,7 +106,7 @@ function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lf
     pop();
     pop();
 
-    translate(xaxis,yaxis,zaxis-130);
+    translate(0,0,-130);
     push();
     translate(-100,0,0);
     let leftarm = Limb(lax, lay, laz, 35,30,30,100);
@@ -241,31 +240,41 @@ function body(){
 
 
 
-
 function walk (i){
-  if(bendcheck[i] == true){
-      zaxis[i]+=(50*sin(radians(2)));
-      xrot[i]-=(radians(0.2));
-  }
-  else{
-      zaxis[i]-=(50*sin(radians(2)));
-      xrot[i]+=(radians(0.2));
-  }
-
   if(walktoken[i] == true){
-    if(rtx[i]<HALF_PI/2){
+    if(rtx[i]<HALF_PI/2 && rlcheck[i] == true){
       rtx[i]+=(radians(4));
       ltx[i]-=(radians(4));
-      rax[i]-=(radians(4));
-      lax[i]+=(radians(4));
+      rlx[i]-=(radians(4));
+      llx[i]-=(radians(2));
+      zaxis[i]+=(50*sin(radians(2)));
+      xrot[i]-=(radians(1));
+    }
+    else if(ltx[i]<(HALF_PI/2) && llcheck[i] == true){
+      rtx[i]-=(radians(4));
+      ltx[i]+=(radians(4));
+      rlx[i]-=(radians(2));
+      llx[i]-=(radians(4));
+      zaxis[i]+=(50*sin(radians(2)));
+      xrot[i]-=(radians(1));
     }
   }
   else{
-    if(rtx[i]>-(HALF_PI/2)){
-      rtx[i]-=(radians(4));
-      ltx[i]+=(radians(4));
-      rax[i]+=(radians(4));
-      lax[i]-=(radians(4));
+    if(rtx[i]>radians(4) && rlcheck[i] == true){
+        rtx[i]-=(radians(4));
+        ltx[i]+=(radians(4));
+        rlx[i]+=(radians(4));
+        llx[i]+=(radians(2));
+        zaxis[i]-=(50*sin(radians(2)));
+        xrot[i]+=(radians(1));
+    }
+    else if(ltx[i]>0 && llcheck[i] == true){
+        rtx[i]+=(radians(4));
+        ltx[i]-=(radians(4));
+        rlx[i]+=(radians(2));
+        llx[i]+=(radians(4));
+        zaxis[i]-=(50*sin(radians(2)));
+        xrot[i]+=(radians(1));
     }
   }
 }
@@ -273,54 +282,85 @@ function walk (i){
 function rightsidewalk (i){
   if(walktoken[i] == true){
     if(rty[i]<HALF_PI/4 && rlcheck[i] == true){
-      rty[i]+=(radians(1));
+      rty[i]+=(radians(2));
+      yrot[i]-=(radians(2));
+      xaxis[i]+=12*sin((radians(30)));
+      rtx[i]+=(radians(2));
+      rlx[i]-=(radians(2));
+      xrot[i]-=(radians(0.5));
+      zaxis[i]+=(50*sin(radians(2)));
+      yaxis[i]+=(50*sin(radians(2)));
     }
     else if(lty[i]>-(HALF_PI/4) && llcheck[i] == true){
-      lty[i]-=(radians(1));
-    }
-    else{
-      //walktoken[i] = false;
-    //  console.log("b");
+      lty[i]-=(radians(2));
+      yrot[i]+=(radians(2));
+      xaxis[i]-=12*sin((radians(30)));
+      ltx[i]+=(radians(2));
+      llx[i]-=(radians(2));
+      xrot[i]-=(radians(0.5));
+      zaxis[i]+=(50*sin(radians(2)));
+      yaxis[i]+=(50*sin(radians(2)));
     }
   }
   else{
-    if(rlcheck[i] == true){
-      if(rty[i]>0){
-        rty[i]-=(radians(1));
-      }
-      else{
-        //walktoken[i] = true;
-        rlcheck[i] = false;
-        llcheck[i] = true;
-
-      }
+    if(rty[i]>radians(2) && rlcheck[i] == true){
+        rty[i]-=(radians(2));
+        yrot[i]+=(radians(2));
+        rtx[i]-=(radians(2));
+        rlx[i]+=(radians(2));
+        xrot[i]+=(radians(0.5));
+        zaxis[i]-=(50*sin(radians(2)));
+        yaxis[i]-=(50*sin(radians(2)));
     }
-    else if(llcheck[i] == true){
-      if(lty[i]<0){
-      lty[i]+=(radians(1));
-      }
-      else{
-        //walktoken[i] = true;
-        rlcheck[i] = true;
-        llcheck[i] = false;
-      }
+    else if(lty[i]<-radians(2) && llcheck[i] == true){
+        lty[i]+=(radians(2));
+        yrot[i]-=(radians(2));
+        ltx[i]-=(radians(2));
+        llx[i]+=(radians(2));
+        xrot[i]+=(radians(0.5));
+        zaxis[i]-=(50*sin(radians(2)));
+        yaxis[i]-=(50*sin(radians(2)));
     }
   }
 }
 
+function walkingarms(i){
+  if(walktoken[i] == true){
+    if(lax[i]<HALF_PI/2 && rlcheck[i] == true){
+      rax[i]-=(radians(4));
+      lax[i]+=(radians(4));
+    }
+    else if(rax[i]<HALF_PI/2 && llcheck[i] == true){
+      rax[i]+=(radians(4));
+      lax[i]-=(radians(4));
+    }
+  }
+  else{
+    if(lax[i]>radians(4) && rlcheck[i] == true){
+      rax[i]+=(radians(4));
+      lax[i]-=(radians(4));
+    }
+    else if(rax[i]>0 && llcheck[i] == true){
+      rax[i]-=(radians(4));
+      lax[i]+=(radians(4));
+    }
+  }
+}
 function waggingarms(i){
   if(walktoken[i] == true){
-    ray[i]+=(radians(1));
-    lay[i]-=(radians(1));
+    if(ray[i] < HALF_PI/4){
+      ray[i]+=(radians(2));
+      lay[i]-=(radians(2));
+    }
   }
   else{
-    ray[i]-=(radians(0.5));
-    lay[i]+=(radians(0.5));
+    if(ray[i] > 0){
+      ray[i]-=(radians(2));
+      lay[i]+=(radians(2));
+    }
   }
 }
-
-function clap(i){
-
+function clappingarms(i){
   if(lax[i]<radians(45)){
     ray[i]-=radians(1);
     lay[i]+=radians(1);
@@ -340,15 +380,19 @@ function clap(i){
 
 
   if(walktoken[i] == true){
-    ray[i]+=(radians(0.5));
-    lay[i]-=(radians(0.5));
-    rfay[i]+=(radians(1));
-    lfay[i]-=(radians(1));
+    if(rfay[i] < HALF_PI/4){
+      ray[i]+=(radians(2));
+      lay[i]-=(radians(2));
+      rfay[i]+=(radians(6));
+      lfay[i]-=(radians(6));
+    }
   }
   else{
-    ray[i]-=(radians(0.5));
-    lay[i]+=(radians(0.5));
-    rfay[i]-=(radians(1));
-    lfay[i]+=(radians(1));
+    if(rfay[i] > -HALF_PI/2){
+      ray[i]-=(radians(2));
+      lay[i]+=(radians(2));
+      rfay[i]-=(radians(6));
+      lfay[i]+=(radians(6));
+    }
   }
 }

@@ -84,6 +84,7 @@ function draw() {
 background(255);
 lights();
 
+translate(0,0,-200);
 rotateX(radians(-90));
 //rotateZ(radians(90));
 // draw a grid on xy plane
@@ -93,8 +94,9 @@ let h1 = Humanoid(xaxis[0], yaxis[0], zaxis[0], xrot[0], yrot[0], zrot[0], lax[0
 let h2 = Humanoid(xaxis[1], yaxis[1], zaxis[1], xrot[1], yrot[1], zrot[1], lax[1], lay[1], laz[1], lfax[1], lfay[1], lfaz[1], rax[1], ray[1], raz[1], rfax[1], rfay[1], rfaz[1], ltx[1], lty[1], ltz[1], llx[1], lly[1], llz[1], rtx[1], rty[1], rtz[1], rlx[1], rly[1], rlz[1]);
 
 rightsidewalk(0);
-//waggingarms(0);
+clappingarms(0);
 walk(1);
+walkingarms(1);
 
 if(frameCount % 30 == 0){
   for(let i = 0; i<2; i++){
@@ -103,6 +105,14 @@ if(frameCount % 30 == 0){
     }
     else{
       walktoken[i] = true;
+      if(rlcheck[i] == true){
+        rlcheck[i] = false;
+        llcheck[i] = true;
+      }
+      else{
+        rlcheck[i] = true;
+        llcheck[i] = false;
+      }
     }
   }
 }
