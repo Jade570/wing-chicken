@@ -120,7 +120,7 @@ function draw() {
   background(0);
   lights();
 
-  translate(0,0,-600);
+  translate(0,0,-800);
   rotateX(radians(-90));
   //rotateZ(radians(35));
 
@@ -135,8 +135,9 @@ function draw() {
   leftsidewalk(0);
   clappingarms(0);
 
-  walk(1);
-  waggingarms(1);
+  //walk(1);
+  //waggingarms(1);
+  rhythm(1);
 
   rightsidewalk(2);
   walkingarms(2);

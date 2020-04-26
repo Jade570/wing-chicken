@@ -235,7 +235,7 @@ function body(){
 
 
 //leg movement
-function walk (i){
+function walk(i){
   if(walktoken[i] == true){
     if(rtx[i]<HALF_PI/2 && rlcheck[i] == true){
       rtx[i]+=(radians(4));
@@ -273,7 +273,7 @@ function walk (i){
     }
   }
 }
-function rightsidewalk (i){
+function rightsidewalk(i){
   if(walktoken[i] == true){
     if(rty[i]<HALF_PI/4 && rlcheck[i] == true){
       rty[i]+=(radians(2));
@@ -317,7 +317,7 @@ function rightsidewalk (i){
     }
   }
 }
-function leftsidewalk (i){
+function leftsidewalk(i){
   if(walktoken[i] == true){
     if(rty[i]<HALF_PI/4 && llcheck[i] == true){
       rty[i]+=(radians(2));
@@ -359,6 +359,24 @@ function leftsidewalk (i){
         zaxis[i]-=(50*sin(radians(2)));
         yaxis[i]-=(50*sin(radians(2)));
     }
+  }
+}
+function rhythm(i){
+  if(bendcheck[i] == true){
+    rtx[i]+=(radians(2));
+    rlx[i]-=(radians(2));
+    ltx[i]+=(radians(2));
+    llx[i]-=(radians(2));
+    zaxis[i]+=50*sin((radians(2)));
+    yaxis[i]+=80*sin((radians(2)));
+  }
+  else{
+    rtx[i]-=(radians(2));
+    rlx[i]+=(radians(2));
+    ltx[i]-=(radians(2));
+    llx[i]+=(radians(2));
+    zaxis[i]-=50*sin((radians(2)));
+    yaxis[i]-=80*sin((radians(2)));
   }
 }
 
