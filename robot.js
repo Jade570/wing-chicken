@@ -1,99 +1,5 @@
-/*
-class Humanoid {
-  constructor (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lfay, lfaz, rax, ray, raz, rfax, rfay, rfaz, ltx, lty, ltz, llx, lly, llz, rtx, rty, rtz, rlx, rly, rlz){
-    this.xaxis = xaxis;
-    this.yaxis = yaxis;
-    this.zaxis = zaxis;
-    this.xrot=xrot;
-    this.yrot=yrot;
-    this.zrot=zrot;
-    this.lax = lax;
-    this.lay = lay;
-    this.laz = laz;
-    this.lfax = lfax;
-    this.lfay = lfay;
-    this.lfaz = lfaz;
-    this.rax = rax;
-    this.ray = ray;
-    this.raz = raz;
-    this.rfax = rfax;
-    this.rfay = rfay;
-    this.rfaz = rfaz;
-    this.ltx = ltx;
-    this.lty = lty;
-    this.ltz = ltz;
-    this.llx = llx;
-    this.lly = lly;
-    this.llz = llz;
-    this.rtx = rtx;
-    this.rty = rty;
-    this.rtz = rtz;
-    this.rlx = rlx;
-    this.rly = rly;
-    this.rlz = rlz;
-
-    push();
-      push();
-      translate(this.xaxis,this.yaxis,this.zaxis-200);
-      head();
-      push();
-      translate(0,0,150);
-      body();
-      pop();
-      pop();
-
-      translate(this.xaxis,this.yaxis,this.zaxis-130);
-      push();
-      translate(-100,0,0);
-      this.leftarm = Limb(this.lax, this.lay, this.laz, 35,30,30,100);
-      translate(0,0,50);
-      this.leftforearm = Limb(this.lfax,this.lfay,this.lfaz,25,30,30,100);
-      pop();
-
-      push();
-      translate(100,0,0);
-      this.rightarm = Limb(this.rax,this.ray,this.raz,35,30,30,100);
-      translate(0,0,50);
-      this.rightforearm = Limb(this.rfax,this.rfay,this.rfaz,25,30,30,100);
-      pop();
-
-      push();
-      translate(-40,0,180);
-      this.leftthigh = Limb(this.ltx,this.lty,this.ltz,20,50,50,100);
-      translate(0,0,50);
-      this.leftleg = Limb(this.llx,this.lly,this.llz,40,50,50,100);
-      translate(0,-20,10);
-      this.leftfoot = Limb(0,0,0,0,70,120,30);
-      pop();
-
-      push();
-      translate(40,0,180);
-      this.rightthigh = Limb(this.rtx,this.rty,this.rtz,20,50,50,100);
-      translate(0,0,50);
-      this.rightleg = Limb(this.rlx,this.rly,this.rlz,40,50,50,100);
-      translate(0,-20,10);
-      this.rightfoot = Limb(0,0,0,0,70,120,30);
-      pop();
-    pop();
-  }
-
-
-
-  render(){
-    push();
-    translate(this.xaxis,this.yaxis,this.zaxis-200);
-    this.head();
-    push();
-    translate(0,0,150);
-    this.body();
-    pop();
-    pop();
-  }
-}
-*/
-
 //building robot
-function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lfay, lfaz, rax, ray, raz, rfax, rfay, rfaz, ltx, lty, ltz, llx, lly, llz, rtx, rty, rtz, rlx, rly, rlz){
+function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lfay, lfaz, rax, ray, raz, rfax, rfay, rfaz, ltx, lty, /*ltz,*/ llx, /*lly, llz,*/ rtx, rty, /*rtz,*/ rlx, /*rly, rlz*/){
   push();
   translate(xaxis,yaxis,zaxis);
   rotateX(xrot);
@@ -125,18 +31,18 @@ function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lf
 
     push();
     translate(-40,0,180);
-    let leftthigh = Limb(ltx,lty,ltz,20,50,50,100);
+    let leftthigh = Limb(ltx,lty,0,20,50,50,100);
     translate(0,0,50);
-    let leftleg = Limb(llx,lly,llz,40,50,50,100);
+    let leftleg = Limb(llx,0,0,40,50,50,100);
     translate(0,-20,10);
     let leftfoot = Limb(0,0,0,0,70,120,30);
     pop();
 
     push();
     translate(40,0,180);
-    let rightthigh = Limb(rtx,rty,rtz,20,50,50,100);
+    let rightthigh = Limb(rtx,rty,0,20,50,50,100);
     translate(0,0,50);
-    let rightleg = Limb(rlx,rly,rlz,40,50,50,100);
+    let rightleg = Limb(rlx,0,0,40,50,50,100);
     translate(0,-20,10);
     let rightfoot = Limb(0,0,0,0,70,120,30);
     pop();
@@ -148,7 +54,7 @@ function Limb (xrot, yrot, zrot, rad, w, h, d) {
     rotateZ(zrot);
     noStroke();
     fill(128,128,128);
-    sphere(rad);
+    sphere(rad, 12, 12);
     translate(0,0,50);
     fill(0, 255, 255);
     box(w, h, d);
@@ -161,12 +67,12 @@ function head(){
   push(); //ears
   translate(-60,0,0);
   rotateZ(HALF_PI);
-  cylinder(25);
+  cylinder(25,25,12,1);
   pop();
   push();
   translate(60,0,0);
   rotateZ(HALF_PI);
-  cylinder(25);
+  cylinder(25,25,12,1);
   pop();
 
   push();   //T accessory
@@ -177,15 +83,15 @@ function head(){
     push();
     fill(0,0,0);
     translate(-35,-4,0);
-    cylinder(3);
+    cylinder(3,3,12,1);
     translate(17.5,0,0);
-    cylinder(3);
+    cylinder(3,3,12,1);
     translate(17.5,0,0);
-    cylinder(3);
+    cylinder(3,3,12,1);
     translate(17.5,0,0);
-    cylinder(3);
+    cylinder(3,3,12,1);
     translate(17.5,0,0);
-    cylinder(3);
+    cylinder(3,3,12,1);
     pop();
 
   translate(0,0,15);
@@ -194,20 +100,20 @@ function head(){
   push();
   fill(0,0,0);
   translate(0,-4,0);
-  cylinder(3);
+  cylinder(3,3,12,1);
   translate(0,0,15);
-  cylinder(3);
+  cylinder(3,3,12,1);
   pop();
 
   translate(0,0,8); //eyes
   fill(255,0,0);
   push();
   translate(-27,0,0);
-  sphere(15);
+  sphere(15,12,12);
   pop();
   push();
   translate(27,0,0);
-  sphere(15);
+  sphere(15,12,12);
   pop();
 
   translate(0,0,30);
@@ -233,7 +139,6 @@ function body(){
   box(150,150,200);
 }
 
-
 //leg movement
 function walk(i){
   if(legreset[i] == false){
@@ -241,14 +146,14 @@ function walk(i){
     ltx[i]=0;
     rty[i]=0;
     lty[i]=0;
-    rtz[i]=0;
-    ltz[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
     rlx[i]=-HALF_PI/4;
     llx[i]=-HALF_PI/4;
-    rly[i]=0;
-    lly[i]=0;
-    rlz[i]=0;
-    llz[i]=0;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
     xaxis[i]=0;
     yaxis[i]=0;
     zaxis[i]=0;
@@ -329,14 +234,14 @@ function rightsidewalk(i){
     ltx[i]=0;
     rty[i]=0;
     lty[i]=0;
-    rtz[i]=0;
-    ltz[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
     rlx[i]=-HALF_PI/4;
     llx[i]=-HALF_PI/4;
-    rly[i]=0;
-    lly[i]=0;
-    rlz[i]=0;
-    llz[i]=0;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
     xaxis[i]=0;
     yaxis[i]=0;
     zaxis[i]=0;
@@ -424,14 +329,14 @@ function leftsidewalk(i){
     ltx[i]=0;
     rty[i]=0;
     lty[i]=0;
-    rtz[i]=0;
-    ltz[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
     rlx[i]=-HALF_PI/4;
     llx[i]=-HALF_PI/4;
-    rly[i]=0;
-    lly[i]=0;
-    rlz[i]=0;
-    llz[i]=0;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
     xaxis[i]=0;
     yaxis[i]=0;
     zaxis[i]=0;
@@ -518,14 +423,14 @@ function rhythm(i){
     ltx[i]=0;
     rty[i]=0;
     lty[i]=0;
-    rtz[i]=0;
-    ltz[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
     rlx[i]=-HALF_PI/4;
     llx[i]=-HALF_PI/4;
-    rly[i]=0;
-    lly[i]=0;
-    rlz[i]=0;
-    llz[i]=0;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
     xaxis[i]=0;
     yaxis[i]=0;
     zaxis[i]=0;
@@ -562,14 +467,14 @@ function leftsiderhythm(i){
     ltx[i]=0;
     rty[i]=0;
     lty[i]=0;
-    rtz[i]=0;
-    ltz[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
     rlx[i]=-HALF_PI/4;
     llx[i]=-HALF_PI/4;
-    rly[i]=0;
-    lly[i]=0;
-    rlz[i]=0;
-    llz[i]=0;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
     xaxis[i]=0;
     yaxis[i]=0;
     zaxis[i]=0;
@@ -607,14 +512,14 @@ function rightsiderhythm(i){
     ltx[i]=0;
     rty[i]=0;
     lty[i]=0;
-    rtz[i]=0;
-    ltz[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
     rlx[i]=-HALF_PI/4;
     llx[i]=-HALF_PI/4;
-    rly[i]=0;
-    lly[i]=0;
-    rlz[i]=0;
-    llz[i]=0;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
     xaxis[i]=0;
     yaxis[i]=0;
     zaxis[i]=0;
@@ -652,14 +557,14 @@ function rightturn(i){
     ltx[i]=0;
     rty[i]=0;
     lty[i]=0;
-    rtz[i]=0;
-    ltz[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
     rlx[i]=-HALF_PI/4;
     llx[i]=-HALF_PI/4;
-    rly[i]=0;
-    lly[i]=0;
-    rlz[i]=0;
-    llz[i]=0;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
     xaxis[i]=0;
     yaxis[i]=0;
     zaxis[i]=0;
@@ -697,14 +602,14 @@ function leftturn(i){
     ltx[i]=0;
     rty[i]=0;
     lty[i]=0;
-    rtz[i]=0;
-    ltz[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
     rlx[i]=-HALF_PI/4;
     llx[i]=-HALF_PI/4;
-    rly[i]=0;
-    lly[i]=0;
-    rlz[i]=0;
-    llz[i]=0;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
     xaxis[i]=0;
     yaxis[i]=0;
     zaxis[i]=0;

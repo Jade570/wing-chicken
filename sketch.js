@@ -19,16 +19,16 @@ let rfay = [robots];
 let rfaz = [robots];
 let ltx = [robots];
 let lty = [robots];
-let ltz = [robots];
+//let ltz = [robots];
 let llx = [robots];
-let lly = [robots];
-let llz = [robots];
+//let lly = [robots];
+//let llz = [robots];
 let rtx = [robots];
 let rty = [robots];
-let rtz = [robots];
+//let rtz = [robots];
 let rlx = [robots];
-let rly = [robots];
-let rlz = [robots];
+//let rly = [robots];
+//let rlz = [robots];
 let walktoken = [robots];
 let bendcheck = [robots];
 let llcheck = [robots];
@@ -97,16 +97,16 @@ function setup() {
      rfaz[i]=0;
      ltx[i]=0;
      lty[i]=0;
-     ltz[i]=0;
+     //ltz[i]=0;
      llx[i]=-(HALF_PI/4);
-     lly[i]=0;
-     llz[i]=0;
+     //lly[i]=0;
+     //llz[i]=0;
      rtx[i]=0;
      rty[i]=0;
-     rtz[i]=0;
+     //rtz[i]=0;
      rlx[i]=-(HALF_PI/4);
-     rly[i]=0;
-     rlz[i]=0;
+     //rly[i]=0;
+     //rlz[i]=0;
      walktoken[i]=true;
      bendcheck[i]=true;
      llcheck[i] = false;
@@ -136,7 +136,7 @@ function draw() {
   for(let i = 0; i<robots; i++){
     push();
     translate(-400+(400*i),0,0);
-    Humanoid(xaxis[i], yaxis[i], zaxis[i], xrot[i], yrot[i], zrot[i], lax[i], lay[i], laz[i], lfax[i], lfay[i], lfaz[i], rax[i], ray[i], raz[i], rfax[i], rfay[i], rfaz[i], ltx[i], lty[i], ltz[i], llx[i], lly[i], llz[i], rtx[i], rty[i], rtz[i], rlx[i], rly[i], rlz[i]);
+    Humanoid(xaxis[i], yaxis[i], zaxis[i], xrot[i], yrot[i], zrot[i], lax[i], lay[i], laz[i], lfax[i], lfay[i], lfaz[i], rax[i], ray[i], raz[i], rfax[i], rfay[i], rfaz[i], ltx[i], lty[i], /*ltz[i],*/ llx[i], /*lly[i], llz[i],*/ rtx[i], rty[i], /*rtz[i],*/ rlx[i], /*rly[i], rlz[i]*/);
     pop();
   }
 
