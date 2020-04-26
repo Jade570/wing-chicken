@@ -36,6 +36,7 @@ let rlcheck = [];
 let armposition = [];
 let armreset = [];
 let legreset = [];
+let kicktoken = [];
 let robots;
 
 function robotcontrol(){
@@ -73,7 +74,7 @@ function robotcontrol(){
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  frameRate(30);
+  frameRate(60);
   robots = 3;
   for(let i = 0; i<robots; i++){
      xaxis[i]=0;
@@ -113,6 +114,7 @@ function setup() {
      armposition[i] = 0;
      legreset[i] = false;
      armreset[i] = false;
+     kicktoken[i] = false;
   }
   xaxis[0] = -400;
   xaxis[1] = 0;
@@ -142,12 +144,16 @@ function draw() {
   leftsidewalk(0);
   clappingarms(0);
 
-  leftturn(1);
-  //walk(1);
+  //rightturn(1);
+  walk(1);
   //waggingarms(1);
   //rhythm(1);
   //raisearms(1);
   raiseleftarm(1);
+
+
+  rightsidewalk(2);
+  walkingarms(2);
 
   switch (armposition[1]){
     case 1:
@@ -179,8 +185,7 @@ function draw() {
   }
 
 
-  rightsidewalk(2);
-  walkingarms(2);
+
 
   robotcontrol();
 }

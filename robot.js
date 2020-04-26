@@ -266,6 +266,7 @@ function walk(i){
       llx[i]-=(radians(2));
       zaxis[i]+=(50*sin(radians(2)));
       xrot[i]-=(radians(1));
+      kicktoken[i] = true;
     }
     else if(ltx[i]<(HALF_PI/2) && llcheck[i] == true){
       rtx[i]-=(radians(4));
@@ -274,6 +275,19 @@ function walk(i){
       llx[i]-=(radians(4));
       zaxis[i]+=(50*sin(radians(2)));
       xrot[i]-=(radians(1));
+      kicktoken[i] = true;
+    }
+    else if(rtx[i]>=HALF_PI/2 && rlcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
+    }
+    else if(ltx[i]>=(HALF_PI/2) && llcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
     }
   }
   else{
@@ -284,6 +298,7 @@ function walk(i){
         llx[i]+=(radians(2));
         zaxis[i]-=(50*sin(radians(2)));
         xrot[i]+=(radians(1));
+        kicktoken[i] = true;
     }
     else if(ltx[i]>0 && llcheck[i] == true){
         rtx[i]+=(radians(4));
@@ -292,6 +307,19 @@ function walk(i){
         llx[i]+=(radians(4));
         zaxis[i]-=(50*sin(radians(2)));
         xrot[i]+=(radians(1));
+        kicktoken[i] = true;
+    }
+    else if(rtx[i]<=radians(4) && rlcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
+    }
+    else if(ltx[i]<=0 && llcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
     }
   }
 }
@@ -329,6 +357,7 @@ function rightsidewalk(i){
       xrot[i]-=(radians(0.5));
       zaxis[i]+=(50*sin(radians(2)));
       yaxis[i]+=(50*sin(radians(2)));
+      kicktoken[i] = true;
     }
     else if(lty[i]>-(HALF_PI/4) && llcheck[i] == true){
       lty[i]-=(radians(2));
@@ -339,6 +368,19 @@ function rightsidewalk(i){
       xrot[i]-=(radians(0.5));
       zaxis[i]+=(50*sin(radians(2)));
       yaxis[i]+=(50*sin(radians(2)));
+      kicktoken[i] = true;
+    }
+    else if(rty[i]>=HALF_PI/4 && rlcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
+    }
+    else if(lty[i]<=-(HALF_PI/4) && llcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
     }
   }
   else{
@@ -350,6 +392,7 @@ function rightsidewalk(i){
         xrot[i]+=(radians(0.5));
         zaxis[i]-=(50*sin(radians(2)));
         yaxis[i]-=(50*sin(radians(2)));
+        kicktoken[i] = true;
     }
     else if(lty[i]<-radians(2) && llcheck[i] == true){
         lty[i]+=(radians(2));
@@ -359,6 +402,19 @@ function rightsidewalk(i){
         xrot[i]+=(radians(0.5));
         zaxis[i]-=(50*sin(radians(2)));
         yaxis[i]-=(50*sin(radians(2)));
+        kicktoken[i] = true;
+    }
+    else if(rty[i]<=radians(2) && rlcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
+    }
+    else if(lty[i]>=-radians(2) && llcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
     }
   }
 }
@@ -395,6 +451,7 @@ function leftsidewalk(i){
       xrot[i]-=(radians(0.5));
       zaxis[i]+=(50*sin(radians(2)));
       yaxis[i]+=(50*sin(radians(2)));
+      kicktoken[i] = true;
     }
     else if(lty[i]>-(HALF_PI/4) && rlcheck[i] == true){
       lty[i]-=(radians(2));
@@ -405,6 +462,19 @@ function leftsidewalk(i){
       xrot[i]-=(radians(0.5));
       zaxis[i]+=(50*sin(radians(2)));
       yaxis[i]+=(50*sin(radians(2)));
+      kicktoken[i] = true;
+    }
+    else if (rty[i]>=HALF_PI/4 && llcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
+    }
+    else if (lty[i]<=-(HALF_PI/4) && rlcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
     }
   }
   else{
@@ -416,6 +486,7 @@ function leftsidewalk(i){
         xrot[i]+=(radians(0.5));
         zaxis[i]-=(50*sin(radians(2)));
         yaxis[i]-=(50*sin(radians(2)));
+        kicktoken[i] = true;
     }
     else if(lty[i]<-radians(2) && rlcheck[i] == true){
         lty[i]+=(radians(2));
@@ -425,6 +496,19 @@ function leftsidewalk(i){
         xrot[i]+=(radians(0.5));
         zaxis[i]-=(50*sin(radians(2)));
         yaxis[i]-=(50*sin(radians(2)));
+        kicktoken[i] = true;
+    }
+    else if (rty[i]<=radians(2) && llcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
+    }
+    else if (lty[i]>=-radians(2) && rlcheck[i] == true){
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
     }
   }
 }
@@ -597,6 +681,13 @@ function rightturn(i){
     if(ltx[i]>0){
       ltx[i]-=radians(3);
       llx[i]+=radians(3);
+      kicktoken[i] = true;
+    }
+    else{
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
     }
   }
 }
@@ -635,6 +726,13 @@ function leftturn(i){
     if(rtx[i]>0){
       rtx[i]-=radians(3);
       rlx[i]+=radians(3);
+      kicktoken[i] = true;
+    }
+    else{
+      if(kicktoken[i] == true){
+        kick.start();
+        kicktoken[i] = false;
+      }
     }
   }
 }
