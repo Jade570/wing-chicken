@@ -142,17 +142,22 @@ function draw() {
 
 
   //robot control part
-  //leftsidewalk(0);
+  leftsidewalk(0);
   clappingarms(0);
-  leftturn(0);
-  //rightturn(1);
-  walk(1);
+  //leftsiderhythm(0);
+  //leftturn(0);
+  //walk(0);
+
+  rightturn(1);
+  //walk(1);
   //waggingarms(1);
   //rhythm(1);
   //raisearms(1);
   raiseleftarm(1);
 
-  rightturn(2);
+  //walk(2);
+  //rightturn(2);
+  rightsiderhythm(2);
   //rightsidewalk(2);
   walkingarms(2);
 

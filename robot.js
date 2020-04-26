@@ -172,6 +172,7 @@ function walk(i){
       zaxis[i]+=(50*sin(radians(2)));
       xrot[i]-=(radians(1));
       kicktoken[i] = true;
+
     }
     else if(ltx[i]<(HALF_PI/2) && llcheck[i] == true){
       rtx[i]-=(radians(4));
@@ -181,18 +182,21 @@ function walk(i){
       zaxis[i]+=(50*sin(radians(2)));
       xrot[i]-=(radians(1));
       kicktoken[i] = true;
+
     }
     else if(rtx[i]>=HALF_PI/2 && rlcheck[i] == true){
       if(kicktoken[i] == true){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("E1", "8n", "+0" , 0.5);
     }
     else if(ltx[i]>=(HALF_PI/2) && llcheck[i] == true){
       if(kicktoken[i] == true){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("B1", "8n", "+0" , 0.5);
     }
   }
   else{
@@ -204,6 +208,7 @@ function walk(i){
         zaxis[i]-=(50*sin(radians(2)));
         xrot[i]+=(radians(1));
         kicktoken[i] = true;
+
     }
     else if(ltx[i]>0 && llcheck[i] == true){
         rtx[i]+=(radians(4));
@@ -213,18 +218,21 @@ function walk(i){
         zaxis[i]-=(50*sin(radians(2)));
         xrot[i]+=(radians(1));
         kicktoken[i] = true;
+
     }
     else if(rtx[i]<=radians(4) && rlcheck[i] == true){
       if(kicktoken[i] == true){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("G1", "8n", "+0" , 0.5);
     }
     else if(ltx[i]<=0 && llcheck[i] == true){
       if(kicktoken[i] == true){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("G1", "8n", "+0" , 0.5);
     }
   }
 }
@@ -280,12 +288,14 @@ function rightsidewalk(i){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("B1", "8n", "+0" , 0.5);
     }
     else if(lty[i]<=-(HALF_PI/4) && llcheck[i] == true){
       if(kicktoken[i] == true){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("D1", "8n", "+0" , 0.5);
     }
   }
   else{
@@ -314,12 +324,14 @@ function rightsidewalk(i){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("E1", "8n", "+0" , 0.5);
     }
     else if(lty[i]>=-radians(2) && llcheck[i] == true){
       if(kicktoken[i] == true){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("E1", "8n", "+0" , 0.5);
     }
   }
 }
@@ -374,12 +386,14 @@ function leftsidewalk(i){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("D1", "8n", "+0" , 0.5);
     }
     else if (lty[i]<=-(HALF_PI/4) && rlcheck[i] == true){
       if(kicktoken[i] == true){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("B1", "8n", "+0" , 0.5);
     }
   }
   else{
@@ -408,12 +422,14 @@ function leftsidewalk(i){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("E1", "8n", "+0" , 0.5);
     }
     else if (lty[i]>=-radians(2) && rlcheck[i] == true){
       if(kicktoken[i] == true){
         kick.start();
         kicktoken[i] = false;
       }
+      bass[i].triggerAttackRelease("E1", "8n", "+0" , 0.5);
     }
   }
 }
@@ -449,6 +465,9 @@ function rhythm(i){
     zaxis[i]+=10*sin((radians(2)));
     yaxis[i]+=80*sin((radians(2)));
   }
+  else{
+    bass[i].triggerAttackRelease("E1", "8n", "+0" , 0.5);
+  }
   }
   else{
     if(rtx[i]>0){
@@ -458,6 +477,9 @@ function rhythm(i){
     llx[i]+=(radians(2));
     zaxis[i]-=10*sin((radians(2)));
     yaxis[i]-=80*sin((radians(2)));
+  }
+  else{
+    bass[i].triggerAttackRelease("D1", "8n", "+0" , 0.5);
   }
   }
 }
@@ -486,23 +508,25 @@ function leftsiderhythm(i){
 
 
   if(bendcheck[i] == true){
-    if(rtx[i]<HALF_PI/8){
+    if(ltx[i]<HALF_PI/2){
       rtx[i]+=(radians(2));
       rlx[i]-=(radians(2));
-      ltx[i]+=(radians(8));
-      llx[i]-=(radians(8));
+      ltx[i]+=(radians(16));
+      llx[i]-=(radians(16));
       zaxis[i]+=10*sin((radians(2)));
       yaxis[i]+=80*sin((radians(2)));
+      bass[i].triggerAttackRelease("G1", "8n", "+0" , 0.5);
     }
   }
   else{
-    if(rtx[i]>0){
+    if(ltx[i]>0){
       rtx[i]-=(radians(2));
       rlx[i]+=(radians(2));
-      ltx[i]-=(radians(8));
-      llx[i]+=(radians(8));
+      ltx[i]-=(radians(16));
+      llx[i]+=(radians(16));
       zaxis[i]-=10*sin((radians(2)));
       yaxis[i]-=80*sin((radians(2)));
+      bass[i].triggerAttackRelease("E1", "8n", "+0" , 0.5);
     }
   }
 }
@@ -531,23 +555,25 @@ function rightsiderhythm(i){
 
 
   if(bendcheck[i] == true){
-    if(ltx[i]<HALF_PI/8){
-    rtx[i]+=(radians(8));
-    rlx[i]-=(radians(8));
+    if(rtx[i]<HALF_PI/2){
+    rtx[i]+=(radians(16));
+    rlx[i]-=(radians(16));
     ltx[i]+=(radians(2));
     llx[i]-=(radians(2));
     zaxis[i]+=10*sin((radians(2)));
     yaxis[i]+=80*sin((radians(2)));
+    bass[i].triggerAttackRelease("B1", "8n", "+0" , 0.5);
   }
   }
   else{
-    if(ltx[i]>0){
-    rtx[i]-=(radians(8));
-    rlx[i]+=(radians(8));
+    if(rtx[i]>0){
+    rtx[i]-=(radians(16));
+    rlx[i]+=(radians(16));
     ltx[i]-=(radians(2));
     llx[i]+=(radians(2));
     zaxis[i]-=10*sin((radians(2)));
     yaxis[i]-=80*sin((radians(2)));
+    bass[i].triggerAttackRelease("E1", "8n", "+0" , 0.5);
   }
   }
 }
