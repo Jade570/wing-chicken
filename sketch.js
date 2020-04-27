@@ -68,45 +68,6 @@ let red = [robots];
 let green = [robots];
 let blue = [robots];
 
-function robotcontrol(){
-
-  if(frameCount % 60 == 0){
-  for(let i = 0; i<12; i++){
-    lightbulb[i] = (lightbulb[i]+30)%360;
-  }
-}
-
-  if(frameCount % 30 == 0){
-    for(let i = 0; i<robots; i++){
-      if (walktoken[i] == true){
-        walktoken[i] = false;
-      }
-      else{
-        walktoken[i] = true;
-        if(rlcheck[i] == true){
-          rlcheck[i] = false;
-          llcheck[i] = true;
-        }
-        else{
-          rlcheck[i] = true;
-          llcheck[i] = false;
-        }
-      }
-    }
-  }
-
-  if(frameCount % 15 == 0){
-    for(let i = 0; i<robots; i++){
-      if (bendcheck[i] == true){
-        bendcheck[i] = false;
-      }
-      else{
-        bendcheck[i] = true;
-      }
-    }
-  }
-}
-
 
 function preload(){
   walk_ = loadImage("assets/walk.jpg");
@@ -228,7 +189,7 @@ function draw() {
   push();
   fill(200,200,200);
   noStroke();
-  translate(0,200,420);
+  translate(0,200,400);
   rotateX(radians(90));
   cylinder(800,200);
   colorMode(HSB);

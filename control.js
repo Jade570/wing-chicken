@@ -139,9 +139,43 @@ class Controller {
       armposition[num-1]=6;
     }
   }
+}
 
+function robotcontrol(){
 
+  if(frameCount % 60 == 0){
+  for(let i = 0; i<12; i++){
+    lightbulb[i] = (lightbulb[i]+30)%360;
+  }
+}
 
+  if(frameCount % 30 == 0){
+    for(let i = 0; i<robots; i++){
+      if (walktoken[i] == true){
+        walktoken[i] = false;
+      }
+      else{
+        walktoken[i] = true;
+        if(rlcheck[i] == true){
+          rlcheck[i] = false;
+          llcheck[i] = true;
+        }
+        else{
+          rlcheck[i] = true;
+          llcheck[i] = false;
+        }
+      }
+    }
+  }
 
-
+  if(frameCount % 15 == 0){
+    for(let i = 0; i<robots; i++){
+      if (bendcheck[i] == true){
+        bendcheck[i] = false;
+      }
+      else{
+        bendcheck[i] = true;
+      }
+    }
+  }
 }

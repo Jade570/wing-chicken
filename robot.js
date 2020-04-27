@@ -33,19 +33,19 @@ function Humanoid (r,g,b,xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lf
     push();
     translate(-40,0,180);
     let leftthigh = Limb(r+48,g,b,ltx,lty,0,20,50,50,100);
-    translate(0,0,50);
+    translate(0,0,45);
     let leftleg = Limb(r+48,g,b,llx,0,0,40,50,50,100);
-    translate(0,-20,10);
-    let leftfoot = Limb(r+48,g,b,0,0,0,0,70,120,30);
+    translate(0,-20,-5);
+    let leftfoot = Limb(r+48,g,b,(HALF_PI/4),0,0,0,70,120,30);
     pop();
 
     push();
     translate(40,0,180);
     let rightthigh = Limb(r+48,g,b,rtx,rty,0,20,50,50,100);
-    translate(0,0,50);
+    translate(0,0,45);
     let rightleg = Limb(r+48,g,b,rlx,0,0,40,50,50,100);
-    translate(0,-20,10);
-    let rightfoot = Limb(r+48,g,b,0,0,0,0,70,120,30);
+    translate(0,-20,-5);
+    let rightfoot = Limb(r+48,g,b,(HALF_PI/4),0,0,0,70,120,30);
     pop();
   pop();
 }
@@ -182,10 +182,9 @@ function walk(i){
       rlx[i]-=(radians(4));
       llx[i]-=(radians(2));
       zaxis[i]+=(50*sin(radians(2)));
-      yaxis[i]+=(10);
+      yaxis[i]+=(50*sin(radians(10)));
       xrot[i]-=(radians(1));
       kicktoken[i] = true;
-
     }
     else if(ltx[i]<(HALF_PI/2) && llcheck[i] == true){
       rtx[i]-=(radians(4));
@@ -193,10 +192,9 @@ function walk(i){
       rlx[i]-=(radians(2));
       llx[i]-=(radians(4));
       zaxis[i]+=(50*sin(radians(2)));
-      yaxis[i]-=(10);
+      yaxis[i]-=(50*sin(radians(10)));
       xrot[i]-=(radians(1));
       kicktoken[i] = true;
-
     }
     else if(rtx[i]>=HALF_PI/2 && rlcheck[i] == true){
       if(kicktoken[i] == true){
