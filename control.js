@@ -4,9 +4,12 @@ class Button{
     this.x = x;
     this.y = y;
 
-    this.click;
+    this.click = false;
     push();
     if (this.clicked()==true){
+      tint(50);
+    }
+    if (this.click==true){
       tint(50);
     }
     image(this.img, this.x, this.y,40,40);
@@ -24,8 +27,6 @@ class Button{
        return this.click;
     }
   }
-
-
 }
 
 
@@ -120,7 +121,7 @@ class Controller {
       armreset[num-1]=false;
       armposition[num-1]=4;
     }
-    if(this.raiseleftarm.click == true){
+    if(this.raiserightarm.click == true){
       armreset[num-1]=false;
       armposition[num-1]=5;
     }
@@ -131,40 +132,6 @@ class Controller {
   }
 
 
-
-/*
-  switch (key){
-    case '1':
-    legreset[num-1]=false;
-    armposition[num-1] = 1;
-    break;
-
-    case '2' :
-    legreset[num-1]=false;
-    armposition[num-1] = 2;
-    break;
-
-    case '3':
-    legreset[num-1]=false;
-    armposition[num-1] = 3;
-    break;
-
-    case '4':
-    legreset[num-1]=false;
-    armposition[num-1] = 4;
-    break;
-
-    case '5' :
-    legreset[num-1]=false;
-    armposition[num-1] = 5;
-    break;
-
-    case '6':
-    legreset[num-1]=false;
-    armposition[num-1] = 6;
-    break;
-  }
-*/
 
 
 
