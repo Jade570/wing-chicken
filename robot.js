@@ -182,6 +182,7 @@ function walk(i){
       rlx[i]-=(radians(4));
       llx[i]-=(radians(2));
       zaxis[i]+=(50*sin(radians(2)));
+      yaxis[i]+=(10);
       xrot[i]-=(radians(1));
       kicktoken[i] = true;
 
@@ -192,6 +193,7 @@ function walk(i){
       rlx[i]-=(radians(2));
       llx[i]-=(radians(4));
       zaxis[i]+=(50*sin(radians(2)));
+      yaxis[i]-=(10);
       xrot[i]-=(radians(1));
       kicktoken[i] = true;
 
@@ -248,6 +250,8 @@ function walk(i){
     }
   }
 }
+
+
 function rightsidewalk(i){
   if(legreset[i] == false){
     rtx[i]=0;
