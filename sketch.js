@@ -285,7 +285,6 @@ function draw() {
       break;
     }
   }
-
   robotcontrol();
 }
 

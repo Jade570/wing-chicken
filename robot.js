@@ -112,15 +112,18 @@ function head(r,g,b){
   cylinder(3,3,12,1);
   pop();
 
-  translate(0,0,8); //eyes
-  fill(255,0,0);
-  push();
-  translate(-27,0,0);
-  sphere(15,12,12);
-  pop();
-  push();
-  translate(27,0,0);
-  sphere(15,12,12);
+  translate(0,0,8);
+  push(); //eyes
+    colorMode(HSB);
+    fill((r-132+360)%360, g, b);
+    push();
+    translate(-27,0,0);
+    sphere(15,12,12);
+    pop();
+    push();
+    translate(27,0,0);
+    sphere(15,12,12);
+    pop();
   pop();
 
   translate(0,0,30);
