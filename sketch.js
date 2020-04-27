@@ -33,7 +33,9 @@ let walktoken = [robots];
 let bendcheck = [robots];
 let llcheck = [robots];
 let rlcheck = [robots];
+
 let armposition = [robots];
+let legposition = [robots];
 let armreset = [robots];
 let legreset = [robots];
 let kicktoken = [robots];
@@ -147,17 +149,12 @@ function setup() {
      llcheck[i] = false;
      rlcheck[i] = true;
      armposition[i] = 0;
+     legposition[i] = 0;
      legreset[i] = false;
      armreset[i] = false;
      kicktoken[i] = false;
      snaretoken[i] = false;
   }
-  xaxis[0] = -400;
-  xaxis[1] = 0;
-  xaxis[2] = 400;
-
-
-
 }
 
 
@@ -171,9 +168,9 @@ function draw() {
   square(-windowWidth/2+20,-windowHeight/2+20,10);
   fill(200,200,200);
   text(":only plays drum",-windowWidth/2+35,-windowHeight/2+28);
-  controller1 = new Controller(-400,windowHeight/4, 1);
+  controller1 = new Controller(-windowWidth/2,windowHeight/4, 1);
   controller2 = new Controller(-100,windowHeight/4, 2);
-  controller3 = new Controller(200,windowHeight/4, 3);
+  controller3 = new Controller(windowWidth/2-200,windowHeight/4, 3);
 
 
 
@@ -198,92 +195,72 @@ function draw() {
 
 
   //robot control part
-  leftsidewalk(0);
-  clappingarms(0);
-  //leftsiderhythm(0);
-  //leftturn(0);
-  //walk(0);
+  for (let i = 0; i<robots; i++){
+    switch (legposition[i]){
+      case 1:
+      walk(i);
+      break;
 
-  rightturn(1);
-  //walk(1);
-  waggingarms(1);
-  //rhythm(1);
-  //raisearms(1);
-  //raisearms(1);
+      case 2 :
+      rightsidewalk(i);
+      break;
 
-  //walk(2);
-  //rightturn(2);
-  rightsiderhythm(2);
-  //rightsidewalk(2);
-  //walkingarms(2);
-  raiseleftarm(2);
+      case 3:
+      leftsidewalk(i);
+      break;
 
-  switch (armposition[1]){
-    case 1:
-    walk(1);
-    break;
+      case 4:
+      rhythm(i);
+      break;
 
-    case 2 :
-    rightsidewalk(1);
-    break;
+      case 5 :
+      leftsiderhythm(i);
+      break;
 
-    case 3:
-    leftsidewalk(1);
-    break;
+      case 6:
+      rightsiderhythm(i);
+      break;
 
-    case 4:
-    rhythm(1);
-    break;
+      case 7:
+      rightturn(i);
+      break;
 
-    case 5 :
-    leftsiderhythm(1);
-    break;
+      case 8:
+      leftturn(i);
+      break;
 
-    case 6:
-    rightsiderhythm(1);
-    break;
+      default:
+      break;
+    }
+    switch (armposition[i]){
+      case 1:
+      walkingarms(i);
+      break;
 
-    default:
-    break;
+      case 2 :
+      waggingarms(i);
+      break;
+
+      case 3:
+      raisearms(i);
+      break;
+
+      case 4:
+      raiseleftarm(i);
+      break;
+
+      case 5 :
+      raiserightarm(i);
+      break;
+
+      case 6:
+      clappingarms(i);
+      break;
+
+      default:
+      break;
+    }
   }
-
-
-
 
   robotcontrol();
-}
-
-
-function keyPressed() {
-  switch (key){
-    case '1':
-    legreset[1] = false;
-    armposition[1] = 1;
-    break;
-
-    case '2' :
-    legreset[1] = false;
-    armposition[1] = 2;
-    break;
-
-    case '3':
-    legreset[1] = false;
-    armposition[1] = 3;
-    break;
-
-    case '4':
-    legreset[1] = false;
-    armposition[1] = 4;
-    break;
-
-    case '5' :
-    legreset[1] = false;
-    armposition[1] = 5;
-    break;
-
-    case '6':
-    legreset[1] = false;
-    armposition[1] = 6;
-    break;
-  }
 }

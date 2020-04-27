@@ -67,10 +67,104 @@ class Controller {
     fill(176, 111, 111);
     square(this.x+62, this.y+167, 46);
     this.clappingarms = new Button(this.x+65, this.y+170, clappingarms_);
+
+
+
+
+    if(this.walk.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 1;
+    }
+    if(this.rightsidewalk.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 2;
+    }
+    if(this.leftsidewalk.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 3;
+    }
+    if(this.rhythm.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 4;
+    }
+    if(this.rightsiderhythm.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 5;
+    }
+    if(this.leftsiderhythm.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 6;
+    }
+    if(this.leftturn.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 7;
+    }
+    if(this.rightturn.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 8;
+    }
+
+    if(this.walkingarms.click == true){
+      armreset[num-1]=false;
+      armposition[num-1]=1;
+    }
+    if(this.waggingarms.click == true){
+      armreset[num-1]=false;
+      armposition[num-1]=2;
+    }
+    if(this.raisearms.click == true){
+      armreset[num-1]=false;
+      armposition[num-1]=3;
+    }
+    if(this.raiseleftarm.click == true){
+      armreset[num-1]=false;
+      armposition[num-1]=4;
+    }
+    if(this.raiseleftarm.click == true){
+      armreset[num-1]=false;
+      armposition[num-1]=5;
+    }
+    if(this.clappingarms.click == true){
+      armreset[num-1]=false;
+      armposition[num-1]=6;
+    }
   }
 
 
 
+/*
+  switch (key){
+    case '1':
+    legreset[num-1]=false;
+    armposition[num-1] = 1;
+    break;
+
+    case '2' :
+    legreset[num-1]=false;
+    armposition[num-1] = 2;
+    break;
+
+    case '3':
+    legreset[num-1]=false;
+    armposition[num-1] = 3;
+    break;
+
+    case '4':
+    legreset[num-1]=false;
+    armposition[num-1] = 4;
+    break;
+
+    case '5' :
+    legreset[num-1]=false;
+    armposition[num-1] = 5;
+    break;
+
+    case '6':
+    legreset[num-1]=false;
+    armposition[num-1] = 6;
+    break;
+  }
+*/
 
 
 
