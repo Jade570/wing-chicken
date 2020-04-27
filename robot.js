@@ -1,13 +1,14 @@
 //building robot
-function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lfay, lfaz, rax, ray, raz, rfax, rfay, rfaz, ltx, lty, /*ltz,*/ llx, /*lly, llz,*/ rtx, rty, /*rtz,*/ rlx, /*rly, rlz*/){
+function Humanoid (r,g,b,xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lfay, lfaz, rax, ray, raz, rfax, rfay, rfaz, ltx, lty, /*ltz,*/ llx, /*lly, llz,*/ rtx, rty, /*rtz,*/ rlx, /*rly, rlz*/){
   push();
+  colorMode(HSB)
   translate(xaxis,yaxis,zaxis);
   rotateX(xrot);
   rotateY(yrot);
   rotateZ(zrot);
     push();
     translate(0,0,-200);
-    head();
+    head(r,g,b);
     push();
     translate(0,0,150);
     body();
@@ -17,51 +18,56 @@ function Humanoid (xaxis,yaxis, zaxis, xrot, yrot, zrot, lax, lay, laz, lfax, lf
     translate(0,0,-130);
     push();
     translate(-100,0,0);
-    let leftarm = Limb(lax, lay, laz, 35,30,30,100);
+    let leftarm = Limb(r+48,g,b, lax, lay, laz, 35,30,30,100);
     translate(0,0,50);
-    let leftforearm = Limb(lfax,lfay,lfaz,25,30,30,100);
+    let leftforearm = Limb(r+48,g,b,lfax,lfay,lfaz,25,30,30,100);
     pop();
 
     push();
     translate(100,0,0);
-    let rightarm = Limb(rax,ray,raz,35,30,30,100);
+    let rightarm = Limb(r+48,g,b,rax,ray,raz,35,30,30,100);
     translate(0,0,50);
-    let rightforearm = Limb(rfax,rfay,rfaz,25,30,30,100);
+    let rightforearm = Limb(r+48,g,b,rfax,rfay,rfaz,25,30,30,100);
     pop();
 
     push();
     translate(-40,0,180);
-    let leftthigh = Limb(ltx,lty,0,20,50,50,100);
+    let leftthigh = Limb(r+48,g,b,ltx,lty,0,20,50,50,100);
     translate(0,0,50);
-    let leftleg = Limb(llx,0,0,40,50,50,100);
+    let leftleg = Limb(r+48,g,b,llx,0,0,40,50,50,100);
     translate(0,-20,10);
-    let leftfoot = Limb(0,0,0,0,70,120,30);
+    let leftfoot = Limb(r+48,g,b,0,0,0,0,70,120,30);
     pop();
 
     push();
     translate(40,0,180);
-    let rightthigh = Limb(rtx,rty,0,20,50,50,100);
+    let rightthigh = Limb(r+48,g,b,rtx,rty,0,20,50,50,100);
     translate(0,0,50);
-    let rightleg = Limb(rlx,0,0,40,50,50,100);
+    let rightleg = Limb(r+48,g,b,rlx,0,0,40,50,50,100);
     translate(0,-20,10);
-    let rightfoot = Limb(0,0,0,0,70,120,30);
+    let rightfoot = Limb(r+48,g,b,0,0,0,0,70,120,30);
     pop();
   pop();
 }
-function Limb (xrot, yrot, zrot, rad, w, h, d) {
+function Limb (r,g,b,xrot, yrot, zrot, rad, w, h, d) {
     rotateX(xrot);
     rotateY(yrot);
     rotateZ(zrot);
     noStroke();
+    push();
+    colorMode(RGB);
     fill(128,128,128);
     sphere(rad, 12, 12);
+    pop();
     translate(0,0,50);
-    fill(0, 255, 255);
+    //fill(0, 255, 255);
+    fill(r,g,b);
     box(w, h, d);
 }
-function head(){
+function head(r,g,b){
   noStroke();
-  fill(14, 230, 57);
+  //fill(14, 230, 57);
+  fill(r,g,b);
   box(100,100,80);
 
   push(); //ears
@@ -76,6 +82,7 @@ function head(){
   pop();
 
   push();   //T accessory
+  colorMode(RGB);
   fill(255,255,255);
   translate(0,-50,-25);
   box(85,10,12);

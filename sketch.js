@@ -58,8 +58,13 @@ let raiseleftarm_;
 let raiserightarm_;
 let stop_;
 
+let tx, ty, tz;
 
 let font;
+
+let red = [robots];
+let green = [robots];
+let blue = [robots];
 
 function robotcontrol(){
   if(frameCount % 30 == 0){
@@ -114,6 +119,9 @@ function preload(){
 }
 
 function setup() {
+  tx = 0;
+  ty = -100;
+  tz = -800;
   createCanvas(windowWidth, windowHeight, WEBGL);
   frameRate(50);
   for(let i = 0; i<robots; i++){
@@ -158,6 +166,16 @@ function setup() {
      kicktoken[i] = false;
      snaretoken[i] = false;
   }
+
+  red[0] = 132
+  green[0] =100
+  blue[0] =  100
+  red[1] =5
+  green[1] =100
+  blue[1] = 100
+  red[2] =245
+  green[2] =100
+  blue[2] = 100
 }
 
 
@@ -165,6 +183,7 @@ function draw() {
   background(0);
   lights();
 
+  //ui part
   textSize(8);
   textFont(font);
   fill(176, 111, 111);
@@ -175,27 +194,27 @@ function draw() {
   controller2 = new Controller(-125,windowHeight/4, 2);
   controller3 = new Controller(windowWidth/2-250,windowHeight/4, 3);
 
-
-
-  translate(0,-100,-800);
+  //translate part
+  translate(tx, ty, tz);
   rotateX(radians(-90));
   //rotateZ(radians(35));
+
+  //stage part
   push();
   fill(200,200,200);
-  //strokeWeight(5);
   noStroke();
   translate(0,300,420);
   rotateX(radians(90));
   cylinder(1000,200);
   pop();
+
   //create robots
   for(let i = 0; i<robots; i++){
     push();
-    translate(-400+(400*i),0,0);
-    Humanoid(xaxis[i], yaxis[i], zaxis[i], xrot[i], yrot[i], zrot[i], lax[i], lay[i], laz[i], lfax[i], lfay[i], lfaz[i], rax[i], ray[i], raz[i], rfax[i], rfay[i], rfaz[i], ltx[i], lty[i], /*ltz[i],*/ llx[i], /*lly[i], llz[i],*/ rtx[i], rty[i], /*rtz[i],*/ rlx[i], /*rly[i], rlz[i]*/);
+    translate(-500+(500*i),0,0);
+    Humanoid(red[i], green[i], blue[i] ,xaxis[i], yaxis[i], zaxis[i], xrot[i], yrot[i], zrot[i], lax[i], lay[i], laz[i], lfax[i], lfay[i], lfaz[i], rax[i], ray[i], raz[i], rfax[i], rfay[i], rfaz[i], ltx[i], lty[i], /*ltz[i],*/ llx[i], /*lly[i], llz[i],*/ rtx[i], rty[i], /*rtz[i],*/ rlx[i], /*rly[i], rlz[i]*/);
     pop();
   }
-
 
   //robot control part
   for (let i = 0; i<robots; i++){
@@ -233,6 +252,7 @@ function draw() {
       break;
 
       default:
+      stoplegs(i);
       break;
     }
     switch (armposition[i]){
@@ -261,9 +281,14 @@ function draw() {
       break;
 
       default:
+      stoparms(i);
       break;
     }
   }
 
   robotcontrol();
+}
+
+function mouseDragged(){
+
 }

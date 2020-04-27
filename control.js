@@ -56,7 +56,7 @@ class Controller {
     rect(this.x+107, this.y+67, 91,46);
     this.rightturn = new Button(this.x+110, this.y+70, rightturn_);
     this.leftturn = new Button(this.x+155, this.y+70, leftturn_);
-    this.stoplegs = new Button(this.x+200, this.y+70, stop_);
+    this.stoplegs = new Button(this.x+202, this.y+70, stop_);
     fill(255);
     text('a\nr\nm\ns', this.x+5, this.y+155);
     fill(205, 209, 221);
@@ -69,7 +69,7 @@ class Controller {
     fill(176, 111, 111);
     square(this.x+62, this.y+167, 46);
     this.clappingarms = new Button(this.x+65, this.y+170, clappingarms_);
-    this.stoparms = new Button(this.x+200, this.y+170, stop_);
+    this.stoparms = new Button(this.x+202, this.y+170, stop_);
 
     if(this.stoparms.click == true){
       armreset[num-1]=false;
