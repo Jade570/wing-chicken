@@ -56,6 +56,8 @@ let clappingarms_;
 let raisearms_;
 let raiseleftarm_;
 let raiserightarm_;
+let stop_;
+
 
 let font;
 
@@ -107,6 +109,7 @@ function preload(){
   raisearms_ = loadImage("assets/raisearms.jpg");
   raiseleftarm_ = loadImage("assets/raiseleftarm.jpg");
   raiserightarm_ = loadImage("assets/raiserightarm.jpg");
+  stop_ = loadImage("assets/stop.jpg");
   font = loadFont('assets/ARCADE_N.TTF');
 }
 
@@ -169,11 +172,11 @@ function draw() {
   fill(200,200,200);
   text(":only plays drum",-windowWidth/2+35,-windowHeight/2+28);
   controller1 = new Controller(-windowWidth/2,windowHeight/4, 1);
-  controller2 = new Controller(-100,windowHeight/4, 2);
-  controller3 = new Controller(windowWidth/2-200,windowHeight/4, 3);
+  controller2 = new Controller(-125,windowHeight/4, 2);
+  controller3 = new Controller(windowWidth/2-250,windowHeight/4, 3);
 
 
-  
+
   translate(0,-100,-800);
   rotateX(radians(-90));
   //rotateZ(radians(35));

@@ -668,6 +668,29 @@ function leftturn(i){
   }
 } //only drum
 
+function stoplegs(i){
+  if(legreset[i] == false){
+    rtx[i]=0;
+    ltx[i]=0;
+    rty[i]=0;
+    lty[i]=0;
+    //rtz[i]=0;
+    //ltz[i]=0;
+    rlx[i]=-HALF_PI/4;
+    llx[i]=-HALF_PI/4;
+    //rly[i]=0;
+    //lly[i]=0;
+    //rlz[i]=0;
+    //llz[i]=0;
+    xaxis[i]=0;
+    yaxis[i]=0;
+    zaxis[i]=0;
+    xrot[i]=0;
+    yrot[i]=0;
+    zrot[i]=0;
+    legreset[i] = true;
+  }
+}
 
 
 
@@ -909,5 +932,23 @@ function raiserightarm(i){
       rfay[i] -= radians(5);
       melody[i].triggerAttackRelease(["E5"], "4n" , "+0", 0.15);
     }
+  }
+}
+
+function stoparms(i){
+  if(armreset[i] == false){
+    rax[i]=0;
+    lax[i]=0;
+    ray[i]=0;
+    lay[i]=0;
+    raz[i]=0;
+    laz[i]=0;
+    rfax[i]=HALF_PI/3;
+    lfax[i]=HALF_PI/3;
+    rfay[i]=0;
+    lfay[i]=0;
+    rfaz[i]=0;
+    lfaz[i]=0;
+    armreset[i] = true;
   }
 }

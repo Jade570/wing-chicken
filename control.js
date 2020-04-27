@@ -40,7 +40,7 @@ class Controller {
 
     noStroke();
     fill(57, 59, 64);
-    rect(this.x,this.y,205, 220);
+    rect(this.x,this.y,250, 220);
     fill(255);
     text('robot '+num, this.x+70, this.y+15);
     text('l\ne\ng\ns', this.x+5, this.y+55);
@@ -56,6 +56,7 @@ class Controller {
     rect(this.x+107, this.y+67, 91,46);
     this.rightturn = new Button(this.x+110, this.y+70, rightturn_);
     this.leftturn = new Button(this.x+155, this.y+70, leftturn_);
+    this.stoplegs = new Button(this.x+200, this.y+70, stop_);
     fill(255);
     text('a\nr\nm\ns', this.x+5, this.y+155);
     fill(205, 209, 221);
@@ -68,8 +69,16 @@ class Controller {
     fill(176, 111, 111);
     square(this.x+62, this.y+167, 46);
     this.clappingarms = new Button(this.x+65, this.y+170, clappingarms_);
+    this.stoparms = new Button(this.x+200, this.y+170, stop_);
 
-
+    if(this.stoparms.click == true){
+      armreset[num-1]=false;
+      armposition[num-1] = 0;
+    }
+    if(this.stoplegs.click == true){
+      legreset[num-1]=false;
+      legposition[num-1] = 0;
+    }
 
 
     if(this.walk.click == true){
