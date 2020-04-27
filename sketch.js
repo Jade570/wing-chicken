@@ -58,15 +58,24 @@ let raiseleftarm_;
 let raiserightarm_;
 let stop_;
 
-let tx, ty, tz;
+let tx, ty, tz, rx, ry, rz;
 
 let font;
+let lightdirection;
 
+let lightbulb = [10];
 let red = [robots];
 let green = [robots];
 let blue = [robots];
 
 function robotcontrol(){
+
+  if(frameCount % 60 == 0){
+  for(let i = 0; i<12; i++){
+    lightbulb[i] = (lightbulb[i]+30)%360;
+  }
+}
+
   if(frameCount % 30 == 0){
     for(let i = 0; i<robots; i++){
       if (walktoken[i] == true){
@@ -86,7 +95,7 @@ function robotcontrol(){
     }
   }
 
-  if(frameCount % 30 == 15 || frameCount % 30 == 0 ){
+  if(frameCount % 15 == 0){
     for(let i = 0; i<robots; i++){
       if (bendcheck[i] == true){
         bendcheck[i] = false;
@@ -122,8 +131,17 @@ function setup() {
   tx = 0;
   ty = -100;
   tz = -800;
+  rx=0;
+  ry=0;
+  rz=0;
+  lightdirection = 0;
   createCanvas(windowWidth, windowHeight, WEBGL);
   frameRate(50);
+
+  for(let i = 0; i<10; i++){
+    lightbulb[i] = random(360);
+  }
+
   for(let i = 0; i<robots; i++){
      xaxis[i]=0;
      yaxis[i]=0;
@@ -181,7 +199,11 @@ function setup() {
 
 function draw() {
   background(0);
+  //light part
   lights();
+  specularColor(255,255,255);
+  directionalLight(255,255,255,1025*cos(lightdirection+=HALF_PI/360), -100, 1025*sin(lightdirection+=HALF_PI/360));
+  shininess(100);
 
   //ui part
   textSize(8);
@@ -196,22 +218,33 @@ function draw() {
 
   //translate part
   translate(tx, ty, tz);
-  rotateX(radians(-90));
-  //rotateZ(radians(35));
+  rotateX(radians(-90)+rx);
+  rotateY(ry);
+  rotateZ(rz);
 
   //stage part
   push();
   fill(200,200,200);
   noStroke();
-  translate(0,300,420);
+  translate(0,200,420);
   rotateX(radians(90));
-  cylinder(1000,200);
+  cylinder(800,200);
+  colorMode(HSB);
+
+  for(let i = 0; i<10; i++){
+    push();
+    translate(825*cos(PI/5*i), -100, 825*sin(PI/5*i));
+    fill(lightbulb[i], 80, 100, 0.3);
+    specularMaterial(lightbulb[i], 80, 100, 0.3);
+    sphere(25,8,8);
+    pop();
+  }
   pop();
 
   //create robots
   for(let i = 0; i<robots; i++){
     push();
-    translate(-500+(500*i),0,0);
+    translate(-500+(500*i),0,20);
     Humanoid(red[i], green[i], blue[i] ,xaxis[i], yaxis[i], zaxis[i], xrot[i], yrot[i], zrot[i], lax[i], lay[i], laz[i], lfax[i], lfay[i], lfaz[i], rax[i], ray[i], raz[i], rfax[i], rfay[i], rfaz[i], ltx[i], lty[i], /*ltz[i],*/ llx[i], /*lly[i], llz[i],*/ rtx[i], rty[i], /*rtz[i],*/ rlx[i], /*rly[i], rlz[i]*/);
     pop();
   }
@@ -289,5 +322,14 @@ function draw() {
 }
 
 function mouseDragged(){
+  tx+=(mouseX-pmouseX);
+  ty+=(mouseY-pmouseY);
+  if(keyIsPressed && keyCode === CONTROL){
+    rz+=(mouseX-pmouseX)/100;
+    rx+=(mouseY-pmouseY)/100;
+  }
+}
 
+function mouseWheel(event){
+  tz+=(event.delta);
 }

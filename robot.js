@@ -114,8 +114,10 @@ function head(r,g,b){
 
   translate(0,0,8);
   push(); //eyes
+  shininess(10);
     colorMode(HSB);
-    fill((r-132+360)%360, g, b);
+    specularMaterial((r-132+360)%360, g, b,0.9);
+    fill((r-132+360)%360, g, b,0.9);
     push();
     translate(-27,0,0);
     sphere(15,12,12);
