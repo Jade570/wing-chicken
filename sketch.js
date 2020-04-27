@@ -212,6 +212,8 @@ function draw() {
   square(-windowWidth/2+20,-windowHeight/2+20,10);
   fill(200,200,200);
   text(":only plays drum",-windowWidth/2+35,-windowHeight/2+28);
+  text("drag: move stage",-windowWidth/2+20,-windowHeight/2+43);
+  text("ctrl+drag: rotation",-windowWidth/2+20,-windowHeight/2+58);
   controller1 = new Controller(-windowWidth/2,windowHeight/4, 1);
   controller2 = new Controller(-125,windowHeight/4, 2);
   controller3 = new Controller(windowWidth/2-250,windowHeight/4, 3);
