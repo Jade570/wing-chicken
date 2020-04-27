@@ -39,6 +39,23 @@ let legreset = [robots];
 let kicktoken = [robots];
 let snaretoken = [robots];
 
+let controller1, controller2, controller3;
+let walk_;
+let rightsidewalk_;
+let leftsidewalk_;
+let rhythm_;
+let leftsiderhythm_;
+let rightsiderhythm_;
+let rightturn_;
+let leftturn_;
+let walkingarms_;
+let waggingarms_;
+let clappingarms_;
+let raisearms_;
+let raiseleftarm_;
+let raiserightarm_;
+
+let font;
 
 function robotcontrol(){
   if(frameCount % 30 == 0){
@@ -73,9 +90,27 @@ function robotcontrol(){
 }
 
 
+function preload(){
+  walk_ = loadImage("assets/walk.jpg");
+  rightsidewalk_ = loadImage("assets/rightsidewalk.jpg");
+  leftsidewalk_ = loadImage("assets/leftsidewalk.jpg");
+  rhythm_ = loadImage("assets/rhythm.jpg");
+  leftsiderhythm_ = loadImage("assets/leftsiderhythm.jpg");
+  rightsiderhythm_ = loadImage("assets/rightsiderhythm.jpg");
+  rightturn_ = loadImage("assets/rightturn.jpg");
+  leftturn_ = loadImage("assets/leftturn.jpg");
+  walkingarms_ = loadImage("assets/walkingarms.jpg");
+  waggingarms_ = loadImage("assets/waggingarms.jpg");
+  clappingarms_ = loadImage("assets/clappingarms.jpg");
+  raisearms_ = loadImage("assets/raisearms.jpg");
+  raiseleftarm_ = loadImage("assets/raiseleftarm.jpg");
+  raiserightarm_ = loadImage("assets/raiserightarm.jpg");
+  font = loadFont('assets/ARCADE_N.TTF');
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  frameRate(60);
+  frameRate(50);
   for(let i = 0; i<robots; i++){
      xaxis[i]=0;
      yaxis[i]=0;
@@ -120,6 +155,9 @@ function setup() {
   xaxis[0] = -400;
   xaxis[1] = 0;
   xaxis[2] = 400;
+
+
+
 }
 
 
@@ -127,14 +165,26 @@ function draw() {
   background(0);
   lights();
 
-  translate(0,0,-800);
+  textSize(8);
+  textFont(font);
+  fill(176, 111, 111);
+  square(-windowWidth/2+20,-windowHeight/2+20,10);
+  fill(200,200,200);
+  text(":only plays drum",-windowWidth/2+35,-windowHeight/2+28);
+  controller1 = new Controller(-400,windowHeight/4, 1);
+  controller2 = new Controller(-100,windowHeight/4, 2);
+  controller3 = new Controller(200,windowHeight/4, 3);
+
+
+
+  translate(0,-100,-800);
   rotateX(radians(-90));
   //rotateZ(radians(35));
   push();
   fill(200,200,200);
   //strokeWeight(5);
   noStroke();
-  translate(0,300,400);
+  translate(0,300,420);
   rotateX(radians(90));
   cylinder(1000,200);
   pop();

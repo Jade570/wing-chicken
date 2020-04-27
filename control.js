@@ -1,0 +1,77 @@
+class Button{
+  constructor(x,y,img){
+    this.img = img;
+    this.x = x;
+    this.y = y;
+
+    this.click;
+    push();
+    if (this.clicked()==true){
+      tint(50);
+    }
+    image(this.img, this.x, this.y,40,40);
+    pop();
+  }
+
+  clicked(){
+    if(mouseIsPressed){
+      if(mouseX>windowWidth/2+this.x && mouseY>windowHeight/2+this.y && mouseX<windowWidth/2+this.x+40 && mouseY<windowHeight/2+this.y+40){
+        this.click=true;
+      }
+      else{
+        this.click=false;
+      }
+       return this.click;
+    }
+  }
+
+
+}
+
+
+class Controller {
+  constructor(x,y,num){
+    this.x = x;
+    this.y = y;
+    this.num = num;
+    textSize(8);
+    textFont(font);
+
+    noStroke();
+    fill(57, 59, 64);
+    rect(this.x,this.y,205, 220);
+    fill(255);
+    text('robot '+num, this.x+70, this.y+15);
+    text('l\ne\ng\ns', this.x+5, this.y+55);
+    fill(205, 209, 221);
+    rect(this.x+17, this.y+22, 181,91);
+    this.walk = new Button(this.x+20, this.y+25, walk_);
+    this.rightsidewalk = new Button(this.x+65, this.y+25, rightsidewalk_);
+    this.leftsidewalk = new Button(this.x+110, this.y+25, leftsidewalk_);
+    this.rhythm = new Button(this.x+155, this.y+25, rhythm_);
+    this.leftsiderhythm = new Button(this.x+20, this.y+70, leftsiderhythm_);
+    this.rightsiderhythm = new Button(this.x+65, this.y+70, rightsiderhythm_);
+    fill(176, 111, 111);
+    rect(this.x+107, this.y+67, 91,46);
+    this.rightturn = new Button(this.x+110, this.y+70, rightturn_);
+    this.leftturn = new Button(this.x+155, this.y+70, leftturn_);
+    fill(255);
+    text('a\nr\nm\ns', this.x+5, this.y+155);
+    fill(205, 209, 221);
+    rect(this.x+17, this.y+122, 181,91);
+    this.walkingarms = new Button(this.x+20, this.y+125, walkingarms_);
+    this.waggingarms = new Button(this.x+65, this.y+125, waggingarms_);
+    this.raisearms = new Button(this.x+110, this.y+125, raisearms_);
+    this.raiseleftarm = new Button(this.x+155, this.y+125, raiseleftarm_);
+    this.raiserightarm = new Button(this.x+20, this.y+170, raiserightarm_);
+    fill(176, 111, 111);
+    square(this.x+62, this.y+167, 46);
+    this.clappingarms = new Button(this.x+65, this.y+170, clappingarms_);
+  }
+
+
+
+
+
+
+}
